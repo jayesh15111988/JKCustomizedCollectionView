@@ -14,13 +14,15 @@
 		91AE2D2E19C12E3900AA36C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D2D19C12E3900AA36C8 /* main.m */; };
 		91AE2D3219C12E3900AA36C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D3119C12E3900AA36C8 /* AppDelegate.m */; };
 		91AE2D3519C12E3900AA36C8 /* PinterestCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91AE2D3319C12E3900AA36C8 /* PinterestCollectionView.storyboard */; };
-		91AE2D3819C12E3900AA36C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D3719C12E3900AA36C8 /* ViewController.m */; };
+		91AE2D3819C12E3900AA36C8 /* JKPinterestCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D3719C12E3900AA36C8 /* JKPinterestCollectionViewController.m */; };
 		91AE2D3A19C12E3900AA36C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91AE2D3919C12E3900AA36C8 /* Images.xcassets */; };
 		91AE2D4119C12E3900AA36C8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D4019C12E3900AA36C8 /* XCTest.framework */; };
 		91AE2D4219C12E3900AA36C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2119C12E3900AA36C8 /* Foundation.framework */; };
 		91AE2D4319C12E3900AA36C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2519C12E3900AA36C8 /* UIKit.framework */; };
 		91AE2D4B19C12E3900AA36C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91AE2D4919C12E3900AA36C8 /* InfoPlist.strings */; };
 		91AE2D4D19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D4C19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m */; };
+		91AE2D5919C1317300AA36C8 /* JKCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */; };
+		91AE2D5D19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +47,18 @@
 		91AE2D3019C12E3900AA36C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		91AE2D3119C12E3900AA36C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		91AE2D3419C12E3900AA36C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PinterestCollectionView.storyboard; sourceTree = "<group>"; };
-		91AE2D3619C12E3900AA36C8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		91AE2D3719C12E3900AA36C8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		91AE2D3619C12E3900AA36C8 /* JKPinterestCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPinterestCollectionViewController.h; sourceTree = "<group>"; };
+		91AE2D3719C12E3900AA36C8 /* JKPinterestCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPinterestCollectionViewController.m; sourceTree = "<group>"; };
 		91AE2D3919C12E3900AA36C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		91AE2D3F19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKCustomizedCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91AE2D4019C12E3900AA36C8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		91AE2D4819C12E3900AA36C8 /* JKCustomizedCollectionViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JKCustomizedCollectionViewTests-Info.plist"; sourceTree = "<group>"; };
 		91AE2D4A19C12E3900AA36C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91AE2D4C19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKCustomizedCollectionViewTests.m; sourceTree = "<group>"; };
+		91AE2D5719C1317300AA36C8 /* JKCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		91AE2D5B19C131E500AA36C8 /* JKCollectionViewCustomizedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCollectionViewCustomizedCell.h; sourceTree = "<group>"; };
+		91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCollectionViewCustomizedCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +118,13 @@
 		91AE2D2719C12E3900AA36C8 /* JKCustomizedCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				91AE2D5A19C131C900AA36C8 /* Collection View Cell */,
+				91AE2D5619C1315300AA36C8 /* Collection View Layout */,
 				91AE2D3019C12E3900AA36C8 /* AppDelegate.h */,
 				91AE2D3119C12E3900AA36C8 /* AppDelegate.m */,
 				91AE2D3319C12E3900AA36C8 /* PinterestCollectionView.storyboard */,
-				91AE2D3619C12E3900AA36C8 /* ViewController.h */,
-				91AE2D3719C12E3900AA36C8 /* ViewController.m */,
+				91AE2D3619C12E3900AA36C8 /* JKPinterestCollectionViewController.h */,
+				91AE2D3719C12E3900AA36C8 /* JKPinterestCollectionViewController.m */,
 				91AE2D3919C12E3900AA36C8 /* Images.xcassets */,
 				91AE2D2819C12E3900AA36C8 /* Supporting Files */,
 			);
@@ -150,6 +158,24 @@
 				91AE2D4919C12E3900AA36C8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		91AE2D5619C1315300AA36C8 /* Collection View Layout */ = {
+			isa = PBXGroup;
+			children = (
+				91AE2D5719C1317300AA36C8 /* JKCollectionViewFlowLayout.h */,
+				91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */,
+			);
+			name = "Collection View Layout";
+			sourceTree = "<group>";
+		};
+		91AE2D5A19C131C900AA36C8 /* Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				91AE2D5B19C131E500AA36C8 /* JKCollectionViewCustomizedCell.h */,
+				91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */,
+			);
+			name = "Collection View Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +275,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91AE2D3819C12E3900AA36C8 /* ViewController.m in Sources */,
+				91AE2D3819C12E3900AA36C8 /* JKPinterestCollectionViewController.m in Sources */,
+				91AE2D5919C1317300AA36C8 /* JKCollectionViewFlowLayout.m in Sources */,
+				91AE2D5D19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m in Sources */,
 				91AE2D3219C12E3900AA36C8 /* AppDelegate.m in Sources */,
 				91AE2D2E19C12E3900AA36C8 /* main.m in Sources */,
 			);

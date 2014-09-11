@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  JKCollectionViewCustomizedCell.h
 //  JKCustomizedCollectionView
 //
 //  Created by Jayesh Kawli on 9/10/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface JKCollectionViewCustomizedCell : UICollectionViewCell
 
 @end
