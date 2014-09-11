@@ -50,7 +50,7 @@ static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
-    return 20;
+    return 40;
 }
 
 

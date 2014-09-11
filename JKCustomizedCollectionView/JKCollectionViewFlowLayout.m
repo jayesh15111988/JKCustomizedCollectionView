@@ -27,6 +27,7 @@ static NSString* const customLayoutCell = @"customizedCollectionViewCellIdentifi
 @property (nonatomic, strong) NSMutableDictionary* cellLayoutInfo;
 @property (nonatomic,assign) float totalContentHeightOfCollectionView;
 @property (nonatomic,assign) float maxHeightForGivenRow;
+@property (nonatomic,assign) BOOL isContentSizeFinalized;
 @end
 
 @implementation JKCollectionViewFlowLayout
@@ -98,17 +99,20 @@ static NSString* const customLayoutCell = @"customizedCollectionViewCellIdentifi
     
     float randomHeightOfCurrentCell=cellMinimumHeight + arc4random() % (cellMaximumHeight - cellMinimumHeight);
     
+    
+    
+    if(!self.isContentSizeFinalized)
+    {
     if(randomHeightOfCurrentCell>self.maxHeightForGivenRow){
         self.maxHeightForGivenRow=randomHeightOfCurrentCell;
     }
-    
-
     
     if((indexPath.section+1)%3==0 || ((indexPath.section+1)==[self.collectionView numberOfSections])){
 
         self.totalContentHeightOfCollectionView+=self.maxHeightForGivenRow;
         self.maxHeightForGivenRow=-100;
     }
+}
 
     DLog(@"%f",self.totalContentHeightOfCollectionView);
     
@@ -169,12 +173,6 @@ static NSString* const customLayoutCell = @"customizedCollectionViewCellIdentifi
 }
 
 - (CGSize)collectionViewContentSize {
-    NSInteger rowCount = [self.collectionView numberOfSections] / self.numberOfColumns;
-    // make sure we count another row if one is only partially filled
-    if ([self.collectionView numberOfSections] % self.numberOfColumns) rowCount++;
-    
-    DLog(@"%f value is",self.totalContentHeightOfCollectionView);
-//    self.collectionView.frame=CGRectMake(self.collectionView.frame.origin.x, self.collectionView.frame.origin.y, self.collectionView.frame.size.width, self.totalContentHeightOfCollectionView)
     return CGSizeMake (self.collectionView.bounds.size.width, self.totalContentHeightOfCollectionView);
 }
 
