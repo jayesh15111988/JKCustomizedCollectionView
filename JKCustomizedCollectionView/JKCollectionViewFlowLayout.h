@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JKPinterestCollectionViewController.h"
 
 @interface JKCollectionViewFlowLayout : UICollectionViewFlowLayout
 
@@ -15,6 +16,7 @@
 @property (nonatomic) CGFloat interItemSpacingY;
 @property (nonatomic) NSInteger numberOfColumns;
 @property (nonatomic, strong) NSArray* listOfKids;
+@property (nonatomic,strong) JKPinterestCollectionViewController* collectionViewMainController;
 - (id)init;
 
 @end

@@ -8,11 +8,14 @@
 
 #import "JKPinterestCollectionViewController.h"
 #import "JKCollectionViewCustomizedCell.h"
+#import "JKCollectionViewFlowLayout.h"
 
 static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 @interface JKPinterestCollectionViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCollectionView;
+@property (weak, nonatomic) IBOutlet JKCollectionViewFlowLayout *mainCollectionViewLayout;
+
 
 @end
 
@@ -21,6 +24,7 @@ static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.mainCollectionViewLayout.collectionViewMainController=self;
     [self.mainCollectionView reloadData];
 
 }
@@ -30,7 +34,7 @@ static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
     
     
     JKCollectionViewCustomizedCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
+    cell.imageView.clipsToBounds=YES;
     [cell setBackgroundColor:[UIColor redColor]];
     return cell;
 }

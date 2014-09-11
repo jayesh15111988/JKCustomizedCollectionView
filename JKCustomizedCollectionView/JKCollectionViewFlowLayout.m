@@ -14,7 +14,8 @@ static float const defaultCellHeight = 250.0f;
 static float const defaultCellWidth = 310.0f;
 static float const defaultContentInsetsTopBottom = 20.0f;
 static float const defaultContentInsetsLeftRight = 20.0f;
-
+static NSInteger const cellMinimumHeight = 320;
+static NSInteger const cellMaximumHeight = 600;
 
 static NSString* const customLayoutCell = @"customizedCollectionViewCellIdentifier";
 
@@ -95,7 +96,7 @@ static NSString* const customLayoutCell = @"customizedCollectionViewCellIdentifi
     (self.numberOfColumns * self.itemSize.width);
     
     
-    float randomHeightOfCurrentCell=300 + arc4random() % (600 - 300);
+    float randomHeightOfCurrentCell=cellMinimumHeight + arc4random() % (cellMaximumHeight - cellMinimumHeight);
     
     if(randomHeightOfCurrentCell>self.maxHeightForGivenRow){
         self.maxHeightForGivenRow=randomHeightOfCurrentCell;

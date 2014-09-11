@@ -23,6 +23,7 @@
 		91AE2D4D19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D4C19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m */; };
 		91AE2D5919C1317300AA36C8 /* JKCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */; };
 		91AE2D5D19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */; };
+		91AE2D6019C1493300AA36C8 /* fed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91AE2D5F19C1493300AA36C8 /* fed.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		91AE2D5B19C131E500AA36C8 /* JKCollectionViewCustomizedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCollectionViewCustomizedCell.h; sourceTree = "<group>"; };
 		91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCollectionViewCustomizedCell.m; sourceTree = "<group>"; };
+		91AE2D5F19C1493300AA36C8 /* fed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fed.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		91AE2D2719C12E3900AA36C8 /* JKCustomizedCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				91AE2D5E19C148B900AA36C8 /* Images */,
 				91AE2D5A19C131C900AA36C8 /* Collection View Cell */,
 				91AE2D5619C1315300AA36C8 /* Collection View Layout */,
 				91AE2D3019C12E3900AA36C8 /* AppDelegate.h */,
@@ -176,6 +179,14 @@
 				91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */,
 			);
 			name = "Collection View Cell";
+			sourceTree = "<group>";
+		};
+		91AE2D5E19C148B900AA36C8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				91AE2D5F19C1493300AA36C8 /* fed.jpg */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AE2D3A19C12E3900AA36C8 /* Images.xcassets in Resources */,
+				91AE2D6019C1493300AA36C8 /* fed.jpg in Resources */,
 				91AE2D2C19C12E3900AA36C8 /* InfoPlist.strings in Resources */,
 				91AE2D3519C12E3900AA36C8 /* PinterestCollectionView.storyboard in Resources */,
 			);
