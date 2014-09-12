@@ -1,0 +1,4 @@
+platform :ios, '7.0'
+inhibit_all_warnings!
+
+pod 'JKEasyAFNetworking', :git => 'git@github.com:jayesh15111988/JKEasyAFNetworking.git' , :branch => 'master'

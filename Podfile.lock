@@ -1,0 +1,21 @@
+PODS:
+  - AFNetworking (1.3.4)
+  - JKEasyAFNetworking (1.0):
+    - AFNetworking (~> 1.3.3)
+    - TPKeyboardAvoiding (~> 1.2)
+  - TPKeyboardAvoiding (1.2.4)
+
+DEPENDENCIES:
+  - JKEasyAFNetworking (from `git@github.com:jayesh15111988/JKEasyAFNetworking.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  JKEasyAFNetworking:
+    :branch: master
+    :git: git@github.com:jayesh15111988/JKEasyAFNetworking.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
+  JKEasyAFNetworking: 855d2e9a9dc4c3fc63e6b766bb9c9dd7bd325758
+  TPKeyboardAvoiding: 925e1e1912597d1a4956697eec3bd9656552153c
+
+COCOAPODS: 0.32.1
