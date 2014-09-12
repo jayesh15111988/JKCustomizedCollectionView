@@ -9,6 +9,8 @@
 #import "JKPinterestCollectionViewController.h"
 #import "JKCollectionViewCustomizedCell.h"
 #import "JKCollectionViewFlowLayout.h"
+#import "JKConstantsCollection.h"
+#import  <JKEasyAFNetworking/JKNetworkActivity.h>
 
 static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
@@ -25,6 +27,22 @@ static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
 {
     [super viewDidLoad];
     self.mainCollectionViewLayout.collectionViewMainController=self;
+    
+    JKNetworkActivity* networkActi=[[JKNetworkActivity alloc] initWithData:nil andAuthorizationToken:nil];
+    
+    
+    [networkActi communicateWithServerWithMethod:0 andIsFullURL:NO andPathToAPI:[NSString stringWithFormat:@"photos/search?term=dog&rpp=10&consumer_key=%@",CONSUMER_KEY] andParameters:nil completion:^(id successResponse) {
+        
+
+        
+        
+    }
+                                         failure:^(NSError* errorResponse) {
+                                             
+                                             
+                                             DLog(@"api request failed with error %@",[errorResponse description]);
+                                         }];
+    
     [self.mainCollectionView reloadData];
 
 }
