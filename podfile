@@ -1,4 +1,5 @@
 platform :ios, '7.0'
 inhibit_all_warnings!
 
+pod 'SDWebImage', '~> 3.7'
 pod 'JKEasyAFNetworking', :git => 'git@github.com:jayesh15111988/JKEasyAFNetworking.git' , :branch => 'master'

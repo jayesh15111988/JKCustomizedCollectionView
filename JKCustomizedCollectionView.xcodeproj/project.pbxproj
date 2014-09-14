@@ -26,6 +26,11 @@
 		91AE2D6019C1493300AA36C8 /* fed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91AE2D5F19C1493300AA36C8 /* fed.jpg */; };
 		91AE2D6419C29E8600AA36C8 /* UIImage+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D6319C29E8600AA36C8 /* UIImage+Utilities.m */; };
 		91AE2D6719C29EAE00AA36C8 /* JKConstantsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D6619C29EAE00AA36C8 /* JKConstantsCollection.m */; };
+		91AE943219C51D2200907BDA /* JKImageInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE943119C51D2200907BDA /* JKImageInfoViewController.m */; };
+		91AE943A19C51DBE00907BDA /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE943719C51DBE00907BDA /* MJPopupBackgroundView.m */; };
+		91AE943B19C51DBE00907BDA /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE943919C51DBE00907BDA /* UIViewController+MJPopupViewController.m */; };
+		91AE943F19C521DF00907BDA /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE943E19C521DF00907BDA /* NSString+Utilities.m */; };
+		91AE944319C5221900907BDA /* JKExtraImageInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE944219C5221900907BDA /* JKExtraImageInformationTableViewCell.m */; };
 		D41D43DA5BFF4936BE3C8524 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BA82C132BD43799A95831C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +74,16 @@
 		91AE2D6319C29E8600AA36C8 /* UIImage+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utilities.m"; sourceTree = "<group>"; };
 		91AE2D6519C29EAE00AA36C8 /* JKConstantsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKConstantsCollection.h; sourceTree = "<group>"; };
 		91AE2D6619C29EAE00AA36C8 /* JKConstantsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKConstantsCollection.m; sourceTree = "<group>"; };
+		91AE943019C51D2200907BDA /* JKImageInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKImageInfoViewController.h; sourceTree = "<group>"; };
+		91AE943119C51D2200907BDA /* JKImageInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageInfoViewController.m; sourceTree = "<group>"; };
+		91AE943619C51DBE00907BDA /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
+		91AE943719C51DBE00907BDA /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
+		91AE943819C51DBE00907BDA /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
+		91AE943919C51DBE00907BDA /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
+		91AE943D19C521DF00907BDA /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
+		91AE943E19C521DF00907BDA /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
+		91AE944119C5221900907BDA /* JKExtraImageInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKExtraImageInformationTableViewCell.h; sourceTree = "<group>"; };
+		91AE944219C5221900907BDA /* JKExtraImageInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKExtraImageInformationTableViewCell.m; sourceTree = "<group>"; };
 		DD8D551F1BAF4595A20D5DAE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +115,8 @@
 		91AE2D1519C12E3900AA36C8 = {
 			isa = PBXGroup;
 			children = (
+				91AE943C19C521C600907BDA /* NSString Utilities */,
+				91AE942E19C51CC100907BDA /* JKPopUpViewController */,
 				91AE2D6119C29E6600AA36C8 /* Image Utilities */,
 				91AE2D2719C12E3900AA36C8 /* JKCustomizedCollectionView */,
 				91AE2D4619C12E3900AA36C8 /* JKCustomizedCollectionViewTests */,
@@ -133,6 +150,8 @@
 		91AE2D2719C12E3900AA36C8 /* JKCustomizedCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				91AE944019C521FD00907BDA /* Table View Cell */,
+				91AE942F19C51D0500907BDA /* Extra Information Views */,
 				91AE2D5E19C148B900AA36C8 /* Images */,
 				91AE2D5A19C131C900AA36C8 /* Collection View Cell */,
 				91AE2D5619C1315300AA36C8 /* Collection View Layout */,
@@ -211,6 +230,45 @@
 				91AE2D6319C29E8600AA36C8 /* UIImage+Utilities.m */,
 			);
 			name = "Image Utilities";
+			sourceTree = "<group>";
+		};
+		91AE942E19C51CC100907BDA /* JKPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				91AE943619C51DBE00907BDA /* MJPopupBackgroundView.h */,
+				91AE943719C51DBE00907BDA /* MJPopupBackgroundView.m */,
+				91AE943819C51DBE00907BDA /* UIViewController+MJPopupViewController.h */,
+				91AE943919C51DBE00907BDA /* UIViewController+MJPopupViewController.m */,
+			);
+			name = JKPopUpViewController;
+			path = JKCustomizedCollectionView;
+			sourceTree = "<group>";
+		};
+		91AE942F19C51D0500907BDA /* Extra Information Views */ = {
+			isa = PBXGroup;
+			children = (
+				91AE943019C51D2200907BDA /* JKImageInfoViewController.h */,
+				91AE943119C51D2200907BDA /* JKImageInfoViewController.m */,
+			);
+			name = "Extra Information Views";
+			sourceTree = "<group>";
+		};
+		91AE943C19C521C600907BDA /* NSString Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				91AE943D19C521DF00907BDA /* NSString+Utilities.h */,
+				91AE943E19C521DF00907BDA /* NSString+Utilities.m */,
+			);
+			name = "NSString Utilities";
+			sourceTree = "<group>";
+		};
+		91AE944019C521FD00907BDA /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				91AE944119C5221900907BDA /* JKExtraImageInformationTableViewCell.h */,
+				91AE944219C5221900907BDA /* JKExtraImageInformationTableViewCell.m */,
+			);
+			name = "Table View Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,9 +404,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91AE943B19C51DBE00907BDA /* UIViewController+MJPopupViewController.m in Sources */,
 				91AE2D3819C12E3900AA36C8 /* JKPinterestCollectionViewController.m in Sources */,
+				91AE943F19C521DF00907BDA /* NSString+Utilities.m in Sources */,
+				91AE943219C51D2200907BDA /* JKImageInfoViewController.m in Sources */,
 				91AE2D5919C1317300AA36C8 /* JKCollectionViewFlowLayout.m in Sources */,
 				91AE2D5D19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m in Sources */,
+				91AE944319C5221900907BDA /* JKExtraImageInformationTableViewCell.m in Sources */,
+				91AE943A19C51DBE00907BDA /* MJPopupBackgroundView.m in Sources */,
 				91AE2D6719C29EAE00AA36C8 /* JKConstantsCollection.m in Sources */,
 				91AE2D3219C12E3900AA36C8 /* AppDelegate.m in Sources */,
 				91AE2D6419C29E8600AA36C8 /* UIImage+Utilities.m in Sources */,

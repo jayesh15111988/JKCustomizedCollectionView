@@ -3,10 +3,46 @@ PODS:
   - JKEasyAFNetworking (1.0):
     - AFNetworking (~> 1.3.3)
     - TPKeyboardAvoiding (~> 1.2)
+  - libwebp (0.4.1):
+    - libwebp/dec
+    - libwebp/demux
+    - libwebp/dsp
+    - libwebp/enc
+    - libwebp/mux
+    - libwebp/utils
+    - libwebp/webp
+  - libwebp/dec (0.4.1):
+    - libwebp/enc
+    - libwebp/utils
+  - libwebp/demux (0.4.1):
+    - libwebp/utils
+  - libwebp/dsp (0.4.1):
+    - libwebp/dec
+    - libwebp/enc
+    - libwebp/utils
+  - libwebp/enc (0.4.1):
+    - libwebp/utils
+  - libwebp/mux (0.4.1):
+    - libwebp/utils
+  - libwebp/utils (0.4.1):
+    - libwebp/dsp
+    - libwebp/webp
+  - libwebp/webp (0.4.1)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core
+    - SDWebImage/MapKit
+    - SDWebImage/WebP
+  - SDWebImage/Core (3.7.1)
+  - SDWebImage/MapKit (3.7.1):
+    - SDWebImage/Core
+  - SDWebImage/WebP (3.7.1):
+    - libwebp
+    - SDWebImage/Core
   - TPKeyboardAvoiding (1.2.4)
 
 DEPENDENCIES:
   - JKEasyAFNetworking (from `git@github.com:jayesh15111988/JKEasyAFNetworking.git`, branch `master`)
+  - SDWebImage (~> 3.7)
 
 EXTERNAL SOURCES:
   JKEasyAFNetworking:
@@ -16,6 +52,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
   JKEasyAFNetworking: 855d2e9a9dc4c3fc63e6b766bb9c9dd7bd325758
+  libwebp: 88e6e172a01df354b0a78400d2e5b87a9f2796cb
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   TPKeyboardAvoiding: 925e1e1912597d1a4956697eec3bd9656552153c
 
 COCOAPODS: 0.32.1

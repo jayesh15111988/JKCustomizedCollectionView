@@ -13,6 +13,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *imageName;
 @property (weak, nonatomic) IBOutlet UILabel *dateAdded;
 @property (weak, nonatomic) IBOutlet UILabel *description;
-- (IBAction)showMoreButtonPressed:(id)sender;
+-(void)customizeCellWithPhotoDetails:(NSDictionary*)photoDetails;
+
+typedef void(^imageInfoBlock)(NSDictionary* imageInfo);
+@property (strong, nonatomic) imageInfoBlock getImageInfo;
+
+typedef void(^authorInfoBlock)(NSDictionary* authorInfo);
+@property (strong, nonatomic) authorInfoBlock getAuthorInfo;
+
 
 @end

@@ -10,6 +10,11 @@
 
 #define CONSUMER_KEY @"71Oq2GyVY7EmE9vmjEowj6a99aWqXW9uOYUVe9AN"
 
+typedef NS_ENUM(NSUInteger, ExtraImageInformationType) {
+    ExtraImageInformation,
+    ExtraImageAuthorInformation
+};
+
 @interface JKConstantsCollection : NSObject
 
 @end
