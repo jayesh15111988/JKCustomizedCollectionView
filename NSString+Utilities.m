@@ -10,4 +10,7 @@
 
 @implementation NSString (Utilities)
 
+-(BOOL)containsSubstringWithString:(NSString*)needle{
+    return ([self rangeOfString:needle options:NSCaseInsensitiveSearch].location != NSNotFound);
+}
 @end

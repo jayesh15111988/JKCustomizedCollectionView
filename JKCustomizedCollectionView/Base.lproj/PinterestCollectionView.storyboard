@@ -36,11 +36,16 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7AJ-Wg-Iqk">
+                                                    <rect key="frame" x="283" y="5" width="60" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageAttributeName" destination="Uft-2S-hNs" id="o3c-Pg-DOm"/>
                                             <outlet property="imageAttributeValue" destination="He7-jp-eHG" id="IY8-E2-4mz"/>
+                                            <outlet property="imageIcon" destination="7AJ-Wg-Iqk" id="WAD-TS-PAh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

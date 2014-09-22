@@ -17,7 +17,6 @@
 //Showing some extra information for selected image sets
 #import "JKImageInfoViewController.h"
 
-#import <SDWebImage/SDWebImageManager.h>
 #import  <JKEasyAFNetworking/JKNetworkActivity.h>
 
 static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
@@ -56,6 +55,7 @@ static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
     
         JKImageInfoViewController* imageInformationController=(JKImageInfoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"imageinfo"];
         imageInformationController.imageInformation=imageInfoForSelectedItem;
+        imageInformationController.extraInformationType=ExtraImageInformation;
         [self presentPopupViewController:imageInformationController animationType:4];
         
     };
@@ -64,6 +64,7 @@ static NSString* cellIdentifier = @"customizedCollectionViewCellIdentifier";
         
         JKImageInfoViewController* authorInformationController=(JKImageInfoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"imageinfo"];
         authorInformationController.imageInformation=authorInfoForSelectedItem;
+        authorInformationController.extraInformationType=ExtraImageAuthorInformation;
         [self presentPopupViewController:authorInformationController animationType:4];
         
     };

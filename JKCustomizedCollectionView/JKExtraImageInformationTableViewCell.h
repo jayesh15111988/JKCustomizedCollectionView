@@ -11,5 +11,7 @@
 @interface JKExtraImageInformationTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *imageAttributeName;
 @property (weak, nonatomic) IBOutlet UILabel *imageAttributeValue;
+@property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
+
 
 @end

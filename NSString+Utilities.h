@@ -10,4 +10,6 @@
 
 @interface NSString (Utilities)
 
+-(BOOL)containsSubstringWithString:(NSString*)needle;
+
 @end
