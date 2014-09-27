@@ -57,23 +57,36 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     JKCollectionViewCustomizedCell *cell =
         [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
                                                   forIndexPath:indexPath];
-    
+
     [cell customizeCellWithPhotoDetails:self.listOfPhotos[indexPath.section]];
 
 
+    __weak typeof(JKCollectionViewCustomizedCell *)weakCell = cell;
     cell.getImageInfo = ^(JKImageObjectModel *imageInfoForSelectedItem) {
+
+        __strong __typeof(JKCollectionViewCustomizedCell *)strongCell =
+            weakCell;
 
         JKImageInfoViewController *imageInformationController =
             (JKImageInfoViewController *)[self.storyboard
                 instantiateViewControllerWithIdentifier:@"imageinfo"];
         imageInformationController.imageInformation = imageInfoForSelectedItem;
         imageInformationController.extraInformationType = ExtraImageInformation;
-        [self presentPopupViewController:imageInformationController
-                           animationType:4];
+
+        imageInformationController.view.frame = CGRectMake(
+            strongCell.frame.origin.x - 190, strongCell.frame.origin.y + 50,
+            currentViewWidth, currentViewHeight);
+
+
+        [self showExtraInformationViewWithViewController:
+                  imageInformationController];
     };
 
     cell.getAuthorInfo =
         ^(JKImageAuthorObjectModel *authorInfoForSelectedItem) {
+
+        __strong __typeof(JKCollectionViewCustomizedCell *)strongCell =
+            weakCell;
 
         JKImageInfoViewController *authorInformationController =
             (JKImageInfoViewController *)[self.storyboard
@@ -82,8 +95,14 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
             authorInfoForSelectedItem;
         authorInformationController.extraInformationType =
             ExtraImageAuthorInformation;
-        [self presentPopupViewController:authorInformationController
-                           animationType:4];
+
+        authorInformationController.view.frame = CGRectMake(
+            strongCell.frame.origin.x - 80, strongCell.frame.origin.y + 50,
+            currentViewWidth, currentViewHeight);
+
+
+        [self showExtraInformationViewWithViewController:
+                  authorInformationController];
     };
     return cell;
 }
@@ -157,5 +176,36 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
             DLog(@"api request failed with error %@",
                  [errorResponse description]);
         }];
+}
+
+- (void)showExtraInformationViewWithViewController:
+            (JKImageInfoViewController *)extraImageInformationController {
+    extraImageInformationController.view.transform =
+        CGAffineTransformMakeScale(0.1, 0.1);
+
+    [self addChildViewController:extraImageInformationController];
+    [self.view addSubview:extraImageInformationController.view];
+    [extraImageInformationController didMoveToParentViewController:self];
+
+
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:defaultAnimationDuration
+        delay:0.0
+        usingSpringWithDamping:0.3
+        initialSpringVelocity:10
+        options:UIViewAnimationOptionCurveEaseOut
+        animations:^{
+
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            extraImageInformationController.view.frame = CGRectMake(
+                strongSelf.view.center.x, 400,
+                extraImageInformationController.view.frame.size.width,
+                extraImageInformationController.view.frame.size.height);
+
+
+            extraImageInformationController.view.transform =
+                CGAffineTransformMakeScale(1, 1);
+        }
+        completion:^(BOOL finished) { DLog(@"Finished"); }];
 }
 @end

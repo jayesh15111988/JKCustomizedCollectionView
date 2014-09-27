@@ -12,6 +12,10 @@
 static CGFloat const stepIncrementForCellHeight = 22;
 static NSString *notSpecifiedDisplayString = @"Not Specified";
 
+static CGFloat currentViewWidth = 500;
+static CGFloat currentViewHeight = 600;
+static CGFloat defaultAnimationDuration = 2.0;
+
 typedef NS_ENUM(NSUInteger, ExtraImageInformationType) {
     ExtraImageInformation,
     ExtraImageAuthorInformation

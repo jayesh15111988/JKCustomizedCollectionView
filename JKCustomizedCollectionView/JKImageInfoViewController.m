@@ -15,9 +15,6 @@
 
 static NSString *informationCellIdentifier = @"infocell";
 
-static CGFloat currentViewWidth = 500;
-static CGFloat currentViewHeight = 600;
-
 @interface JKImageInfoViewController ()
 @property(weak, nonatomic) IBOutlet UITableView *imageInfoTableView;
 @property(strong, nonatomic) SDWebImageManager *manager;
