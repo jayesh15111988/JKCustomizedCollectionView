@@ -7,19 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JKImageObjectModel.h"
+#import "JKImageAuthorObjectModel.h"
+@class JKImageAuthorObjectModel;
 
 @interface JKCollectionViewCustomizedCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *imageName;
-@property (weak, nonatomic) IBOutlet UILabel *dateAdded;
-@property (weak, nonatomic) IBOutlet UILabel *description;
--(void)customizeCellWithPhotoDetails:(NSDictionary*)photoDetails;
+@property(weak, nonatomic) IBOutlet UIImageView *imageView;
+@property(weak, nonatomic) IBOutlet UILabel *imageName;
+@property(weak, nonatomic) IBOutlet UILabel *dateAdded;
+@property(weak, nonatomic) IBOutlet UILabel *imageDescription;
+- (void)customizeCellWithPhotoDetails:(NSDictionary *)photoDetails;
 
-typedef void(^imageInfoBlock)(NSDictionary* imageInfo);
-@property (strong, nonatomic) imageInfoBlock getImageInfo;
+@property(strong, nonatomic) JKImageObjectModel *imageModel;
+@property(strong, nonatomic) JKImageAuthorObjectModel *imageAuthorModel;
 
-typedef void(^authorInfoBlock)(NSDictionary* authorInfo);
-@property (strong, nonatomic) authorInfoBlock getAuthorInfo;
+typedef void (^imageInfoBlock)(JKImageObjectModel *imageInfo);
+@property(strong, nonatomic) imageInfoBlock getImageInfo;
+
+typedef void (^authorInfoBlock)(JKImageAuthorObjectModel *authorInfo);
+@property(strong, nonatomic) authorInfoBlock getAuthorInfo;
 
 
 @end

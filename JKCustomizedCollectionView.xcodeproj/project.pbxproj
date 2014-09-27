@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91100F0019D18C9300D23FAC /* JKImageObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100EFF19D18C9300D23FAC /* JKImageObjectModel.m */; };
+		91100F0319D18CA700D23FAC /* JKImageAuthorObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */; };
 		91AE2D2219C12E3900AA36C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2119C12E3900AA36C8 /* Foundation.framework */; };
 		91AE2D2419C12E3900AA36C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */; };
 		91AE2D2619C12E3900AA36C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2519C12E3900AA36C8 /* UIKit.framework */; };
@@ -46,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		10BA82C132BD43799A95831C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		91100EFE19D18C9300D23FAC /* JKImageObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKImageObjectModel.h; sourceTree = "<group>"; };
+		91100EFF19D18C9300D23FAC /* JKImageObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageObjectModel.m; sourceTree = "<group>"; };
+		91100F0119D18CA700D23FAC /* JKImageAuthorObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKImageAuthorObjectModel.h; sourceTree = "<group>"; };
+		91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageAuthorObjectModel.m; sourceTree = "<group>"; };
 		91AE2D1E19C12E3900AA36C8 /* JKCustomizedCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKCustomizedCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91AE2D2119C12E3900AA36C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,9 +118,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91100EF819D18C0600D23FAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91100EFE19D18C9300D23FAC /* JKImageObjectModel.h */,
+				91100EFF19D18C9300D23FAC /* JKImageObjectModel.m */,
+				91100F0119D18CA700D23FAC /* JKImageAuthorObjectModel.h */,
+				91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		91AE2D1519C12E3900AA36C8 = {
 			isa = PBXGroup;
 			children = (
+				91100EF819D18C0600D23FAC /* Model */,
 				91AE943C19C521C600907BDA /* NSString Utilities */,
 				91AE942E19C51CC100907BDA /* JKPopUpViewController */,
 				91AE2D6119C29E6600AA36C8 /* Image Utilities */,
@@ -404,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91100F0319D18CA700D23FAC /* JKImageAuthorObjectModel.m in Sources */,
 				91AE943B19C51DBE00907BDA /* UIViewController+MJPopupViewController.m in Sources */,
 				91AE2D3819C12E3900AA36C8 /* JKPinterestCollectionViewController.m in Sources */,
 				91AE943F19C521DF00907BDA /* NSString+Utilities.m in Sources */,
@@ -414,6 +433,7 @@
 				91AE943A19C51DBE00907BDA /* MJPopupBackgroundView.m in Sources */,
 				91AE2D6719C29EAE00AA36C8 /* JKConstantsCollection.m in Sources */,
 				91AE2D3219C12E3900AA36C8 /* AppDelegate.m in Sources */,
+				91100F0019D18C9300D23FAC /* JKImageObjectModel.m in Sources */,
 				91AE2D6419C29E8600AA36C8 /* UIImage+Utilities.m in Sources */,
 				91AE2D2E19C12E3900AA36C8 /* main.m in Sources */,
 			);

@@ -10,6 +10,7 @@
 
 @interface NSString (Utilities)
 
--(BOOL)containsSubstringWithString:(NSString*)needle;
-
+- (BOOL)containsSubstringWithString:(NSString *)needle;
+- (NSString *)replaceSpaceWithSymbol;
+- (NSString*)convertmySQLStringToDateFormattedString;
 @end

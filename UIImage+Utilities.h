@@ -10,4 +10,5 @@
 
 @interface UIImage (Utilities)
 
+- (UIImage *)imageWithImageScaledToWidth:(CGFloat)imageWidth;
 @end

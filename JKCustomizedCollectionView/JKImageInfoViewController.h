@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "JKConstantsCollection.h"
-
+@class JKImageObjectModel;
+@class JKImageAuthorObjectModel;
 
 @interface JKImageInfoViewController : UIViewController
 @property (nonatomic,assign) ExtraImageInformationType extraInformationType;
 
-
-@property (nonatomic,strong) NSDictionary* imageInformation;
+@property (nonatomic,strong) JKImageObjectModel* imageInformation;
+@property (nonatomic,strong) JKImageAuthorObjectModel* imageAuthorInformation;
 @end

@@ -97,7 +97,10 @@ static NSString* const customLayoutCell = @"customizedCollectionViewCellIdentifi
     (self.numberOfColumns * self.itemSize.width);
     
     
-    float randomHeightOfCurrentCell=cellMinimumHeight + arc4random() % (cellMaximumHeight - cellMinimumHeight);
+    
+    //Critical height increase label height for each 38 increase in input string length
+    //TO DO
+    CGFloat randomHeightOfCurrentCell=305;//cellMinimumHeight + arc4random() % (cellMaximumHeight - cellMinimumHeight);
     
     
     

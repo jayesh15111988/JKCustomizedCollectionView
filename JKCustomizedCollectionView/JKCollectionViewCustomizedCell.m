@@ -8,12 +8,15 @@
 
 #import "JKCollectionViewCustomizedCell.h"
 #import <SDWebImage/SDWebImageManager.h>
+#import "NSString+Utilities.h"
+#import "UIImage+Utilities.h"
+#import "JKImageObjectModel.h"
 
 @interface JKCollectionViewCustomizedCell ()
 
-@property (strong,nonatomic) SDWebImageManager* manager;
-@property (strong,nonatomic) NSURL* individualImageURL;
-@property (strong,nonatomic) NSDictionary* individualImageProperties;
+@property(strong, nonatomic) SDWebImageManager *manager;
+@property(strong, nonatomic) NSURL *individualImageURL;
+@property(strong, nonatomic) JKImageObjectModel *individualImageProperties;
 - (IBAction)imageInfoButtonClicked:(id)sender;
 - (IBAction)authorInfoButtonClicked:(id)sender;
 
@@ -21,57 +24,62 @@
 
 @implementation JKCollectionViewCustomizedCell
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
- 
     }
     return self;
 }
 
--(void)customizeCellWithPhotoDetails:(NSDictionary*)photoDetails{
-    self.manager=[SDWebImageManager sharedManager];
-    self.individualImageProperties=photoDetails;
-    self.imageView.clipsToBounds=YES;
-    
-    self.individualImageURL=[NSURL URLWithString:self.individualImageProperties[@"image_url"]];
-    self.imageName.text=[NSString stringWithFormat:@"%@",self.individualImageProperties[@"name"]?:@""];
-    self.dateAdded.text=[NSString stringWithFormat:@"%@",self.individualImageProperties[@"taken_at"]?:@""];
-    self.description.text=[NSString stringWithFormat:@"%@",self.individualImageProperties[@"description"]?:@""];
-    DLog(@"%@ image url is",self.individualImageURL);
-    
-    
-    [self.manager downloadImageWithURL:self.individualImageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize){
-    
-    //Do something with image download progress work
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-        //Once image download is complete stick it to the storyboard
-        if(image){
-            [self.imageView setImage:image];
-        }
-        else{
-          //Put some placeholder image in here if image is not found
-            //  [self.imageView setImage:nil];
-        }
-        
-    }];
-    
-    [self setBackgroundColor:[UIColor redColor]];
-    
+- (void)customizeCellWithPhotoDetails:(JKImageObjectModel *)photoDetails {
+
+
+    self.individualImageProperties = photoDetails;
+
+
+    self.imageName.text = photoDetails.imageName;
+    self.dateAdded.text = photoDetails.takenOn;
+
+
+    self.imageDescription.text = photoDetails.imageDescription;
+
+
+    __block CGFloat imageWidthToAdjust = 200;
+
+    [[SDWebImageManager sharedManager]
+        downloadImageWithURL:photoDetails.iconImageURL
+        options:0
+        progress:^(NSInteger receivedSize, NSInteger expectedSize) {}
+        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
+                    BOOL finished, NSURL *imageURL) {
+
+            if (image.size.width < imageWidthToAdjust) {
+                imageWidthToAdjust = image.size.width;
+            }
+
+            if (image) {
+
+                image = [image imageWithImageScaledToWidth:imageWidthToAdjust];
+                [self.imageView setImage:image];
+            } else {
+                [self.imageView setImage:[UIImage imageNamed:@"fed.jpg"]];
+            }
+        }];
 }
 
+
 - (IBAction)imageInfoButtonClicked:(id)sender {
-    //Show extra image information if this button is pressed
-    if(self.getImageInfo){
+    // Show extra image information if this button is pressed
+    if (self.getImageInfo) {
         self.getImageInfo(self.individualImageProperties);
     }
 }
 
 - (IBAction)authorInfoButtonClicked:(id)sender {
-    //Show author specific information if this button is pressed
-    if(self.getAuthorInfo){
-        self.getAuthorInfo(self.individualImageProperties[@"user"]);
+    // Show author specific information if this button is pressed
+    if (self.getAuthorInfo) {
+        self.getAuthorInfo(
+            self.individualImageProperties.authorModelForCurrentImage);
     }
 }
 @end
