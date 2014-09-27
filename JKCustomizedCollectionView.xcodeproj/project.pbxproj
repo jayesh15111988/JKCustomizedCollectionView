@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		91100F0019D18C9300D23FAC /* JKImageObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100EFF19D18C9300D23FAC /* JKImageObjectModel.m */; };
 		91100F0319D18CA700D23FAC /* JKImageAuthorObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */; };
+		91AA40E819D70413009CB397 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AA40E719D70413009CB397 /* noImage.png */; };
 		91AE2D2219C12E3900AA36C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2119C12E3900AA36C8 /* Foundation.framework */; };
 		91AE2D2419C12E3900AA36C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */; };
 		91AE2D2619C12E3900AA36C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2519C12E3900AA36C8 /* UIKit.framework */; };
@@ -25,7 +26,6 @@
 		91AE2D4D19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D4C19C12E3900AA36C8 /* JKCustomizedCollectionViewTests.m */; };
 		91AE2D5919C1317300AA36C8 /* JKCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */; };
 		91AE2D5D19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */; };
-		91AE2D6019C1493300AA36C8 /* fed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91AE2D5F19C1493300AA36C8 /* fed.jpg */; };
 		91AE2D6419C29E8600AA36C8 /* UIImage+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D6319C29E8600AA36C8 /* UIImage+Utilities.m */; };
 		91AE2D6719C29EAE00AA36C8 /* JKConstantsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE2D6619C29EAE00AA36C8 /* JKConstantsCollection.m */; };
 		91AE943219C51D2200907BDA /* JKImageInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AE943119C51D2200907BDA /* JKImageInfoViewController.m */; };
@@ -52,6 +52,7 @@
 		91100EFF19D18C9300D23FAC /* JKImageObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageObjectModel.m; sourceTree = "<group>"; };
 		91100F0119D18CA700D23FAC /* JKImageAuthorObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKImageAuthorObjectModel.h; sourceTree = "<group>"; };
 		91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageAuthorObjectModel.m; sourceTree = "<group>"; };
+		91AA40E719D70413009CB397 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		91AE2D1E19C12E3900AA36C8 /* JKCustomizedCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKCustomizedCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91AE2D2119C12E3900AA36C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,7 +76,6 @@
 		91AE2D5819C1317300AA36C8 /* JKCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		91AE2D5B19C131E500AA36C8 /* JKCollectionViewCustomizedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCollectionViewCustomizedCell.h; sourceTree = "<group>"; };
 		91AE2D5C19C131E500AA36C8 /* JKCollectionViewCustomizedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCollectionViewCustomizedCell.m; sourceTree = "<group>"; };
-		91AE2D5F19C1493300AA36C8 /* fed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fed.jpg; sourceTree = "<group>"; };
 		91AE2D6219C29E8600AA36C8 /* UIImage+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utilities.h"; sourceTree = "<group>"; };
 		91AE2D6319C29E8600AA36C8 /* UIImage+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utilities.m"; sourceTree = "<group>"; };
 		91AE2D6519C29EAE00AA36C8 /* JKConstantsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKConstantsCollection.h; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 		91AE2D5E19C148B900AA36C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				91AE2D5F19C1493300AA36C8 /* fed.jpg */,
+				91AA40E719D70413009CB397 /* noImage.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -368,8 +368,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AE2D3A19C12E3900AA36C8 /* Images.xcassets in Resources */,
-				91AE2D6019C1493300AA36C8 /* fed.jpg in Resources */,
 				91AE2D2C19C12E3900AA36C8 /* InfoPlist.strings in Resources */,
+				91AA40E819D70413009CB397 /* noImage.png in Resources */,
 				91AE2D3519C12E3900AA36C8 /* PinterestCollectionView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

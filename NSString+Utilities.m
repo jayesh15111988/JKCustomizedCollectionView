@@ -37,10 +37,10 @@ static NSDateFormatter *dateFormatter;
 
     dateFormatter = [[NSDateFormatter alloc] init];
 
-    if (!self || ([self class] == [NSNull null])) {
+    /*if (!self || ([self class] == [NSNull null])) {
         [dateFormatter setDateFormat:@"EEEE MMM d, yyyy"];
         return [dateFormatter stringFromDate:[NSDate date]];
-    }
+    }*/
 
     NSMutableString *originalString =
         [[self stringByReplacingOccurrencesOfString:@"T"
@@ -59,5 +59,9 @@ static NSDateFormatter *dateFormatter;
     NSString *desiredDateInFinalFormat =
         [dateFormatter stringFromDate:temporaryDate];
     return desiredDateInFinalFormat;
+}
+
+- (BOOL)isNull {
+    return (((NSNull *)self == [NSNull null]) || (!self));
 }
 @end

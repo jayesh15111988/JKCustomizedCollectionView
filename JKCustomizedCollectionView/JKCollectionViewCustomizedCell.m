@@ -11,6 +11,7 @@
 #import "NSString+Utilities.h"
 #import "UIImage+Utilities.h"
 #import "JKImageObjectModel.h"
+#import "JKConstantsCollection.h"
 
 @interface JKCollectionViewCustomizedCell ()
 
@@ -43,8 +44,23 @@
 
     self.imageDescription.text = photoDetails.imageDescription;
 
+    self.imageDescription.numberOfLines = photoDetails.heightToIncrementForCell;
 
+    CGRect imageDescriptionFrame = self.imageDescription.frame;
+    imageDescriptionFrame.size.height =
+        stepIncrementForCellHeight * photoDetails.heightToIncrementForCell;
+    self.imageDescription.frame = imageDescriptionFrame;
+
+    DLog(@"Height %f and number of lines %d",
+         self.imageDescription.frame.size.height,
+         self.imageDescription.numberOfLines);
+
+    
     __block CGFloat imageWidthToAdjust = 200;
+
+    __weak typeof(self) weakSelf = self;
+
+    self.imageView.alpha = 0;
 
     [[SDWebImageManager sharedManager]
         downloadImageWithURL:photoDetails.iconImageURL
@@ -53,17 +69,27 @@
         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
                     BOOL finished, NSURL *imageURL) {
 
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+
             if (image.size.width < imageWidthToAdjust) {
                 imageWidthToAdjust = image.size.width;
             }
 
+
             if (image) {
 
                 image = [image imageWithImageScaledToWidth:imageWidthToAdjust];
-                [self.imageView setImage:image];
+                [strongSelf.imageView setImage:image];
             } else {
-                [self.imageView setImage:[UIImage imageNamed:@"fed.jpg"]];
+                [strongSelf.imageView
+                    setImage:[UIImage imageNamed:@"noImage.png"]];
             }
+
+            [UIView animateWithDuration:1
+                delay:0.0f
+                options:UIViewAnimationOptionCurveLinear
+                animations:^{ strongSelf.imageView.alpha = 1; }
+                completion:^(BOOL finished) {}];
         }];
 }
 
@@ -82,4 +108,6 @@
             self.individualImageProperties.authorModelForCurrentImage);
     }
 }
+
+
 @end

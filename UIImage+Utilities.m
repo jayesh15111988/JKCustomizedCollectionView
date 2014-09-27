@@ -21,8 +21,8 @@
 
     
     
-    float newHeight = self.size.height * scaleFactor;
-    float newWidth = oldWidth * scaleFactor;
+    CGFloat newHeight = self.size.height * scaleFactor;
+    CGFloat newWidth = oldWidth * scaleFactor;
 
     UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
     [self drawInRect:CGRectMake(0, 0, newWidth, newHeight)];

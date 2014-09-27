@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JKPinterestCollectionViewController.h"
+@class JKPinterestCollectionViewController;
 
 @interface JKCollectionViewFlowLayout : UICollectionViewFlowLayout
 

@@ -13,4 +13,5 @@
 - (BOOL)containsSubstringWithString:(NSString *)needle;
 - (NSString *)replaceSpaceWithSymbol;
 - (NSString*)convertmySQLStringToDateFormattedString;
+-(BOOL)isNull;
 @end

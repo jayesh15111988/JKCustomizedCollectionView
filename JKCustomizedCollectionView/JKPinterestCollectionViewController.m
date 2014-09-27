@@ -57,6 +57,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     JKCollectionViewCustomizedCell *cell =
         [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
                                                   forIndexPath:indexPath];
+    
     [cell customizeCellWithPhotoDetails:self.listOfPhotos[indexPath.section]];
 
 

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define CONSUMER_KEY @"71Oq2GyVY7EmE9vmjEowj6a99aWqXW9uOYUVe9AN"
+static CGFloat const stepIncrementForCellHeight = 22;
+static NSString *notSpecifiedDisplayString = @"Not Specified";
 
 typedef NS_ENUM(NSUInteger, ExtraImageInformationType) {
     ExtraImageInformation,

@@ -8,14 +8,15 @@
 
 #import "JKImageInfoViewController.h"
 #import "JKImageObjectModel.h"
+#import "JKConstantsCollection.h"
 #import "JKExtraImageInformationTableViewCell.h"
 #import "NSString+Utilities.h"
 #import <SDWebImage/SDWebImageManager.h>
 
 static NSString *informationCellIdentifier = @"infocell";
 
-static float currentViewWidth = 400;
-static float currentViewHeight = 400;
+static CGFloat currentViewWidth = 500;
+static CGFloat currentViewHeight = 600;
 
 @interface JKImageInfoViewController ()
 @property(weak, nonatomic) IBOutlet UITableView *imageInfoTableView;
@@ -157,6 +158,7 @@ static float currentViewHeight = 400;
 
     NSString *attributeValue = @"";
 
+    DLog(@"Index row %d", indexPath.row);
 
     if (self.extraInformationType == ExtraImageInformation) {
         switch (indexPath.row) {
@@ -175,6 +177,7 @@ static float currentViewHeight = 400;
             break;
         case 5:
             attributeValue = self.imageInformation.favoritesCount;
+
             break;
         case 6:
             attributeValue = self.imageInformation.focalLength;
@@ -241,11 +244,11 @@ static float currentViewHeight = 400;
         }
     }
 
-    cell.imageIcon.hidden = !(indexPath.row==0);
+    cell.imageIcon.hidden = !(indexPath.row == 0);
     cell.imageAttributeValue.hidden = !cell.imageIcon.hidden;
-    
+
     if (indexPath.row == 0) {
-       
+
 
         if (!cell.imageIcon.hidden) {
 
@@ -280,7 +283,7 @@ static float currentViewHeight = 400;
                     }];
 
             } else {
-                [cell.imageIcon setImage:[UIImage imageNamed:@"fed.jpg"]];
+                [cell.imageIcon setImage:[UIImage imageNamed:@"noImage.png"]];
             }
 
         } else {
@@ -289,8 +292,9 @@ static float currentViewHeight = 400;
                 stringWithFormat:@"%@", attributeValue ?: @"Not Available"];
         }
     }
-
-    cell.imageAttributeValue.text = attributeValue;
+    DLog(@"Class %@", [attributeValue class]);
+    cell.imageAttributeValue.text =
+        [attributeValue isNull] ? notSpecifiedDisplayString : attributeValue;
     return cell;
 }
 

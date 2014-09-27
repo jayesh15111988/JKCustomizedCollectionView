@@ -7,6 +7,9 @@
 //
 
 #import "JKCollectionViewFlowLayout.h"
+#import "JKImageObjectModel.h"
+#import "JKPinterestCollectionViewController.h"
+#import "JKConstantsCollection.h"
 
 // Source : http://skeuo.com/uicollectionview-custom-layout-tutorial
 
@@ -30,6 +33,7 @@ static NSString *const customLayoutCell =
 @property(nonatomic, assign) CGFloat totalContentHeightOfCollectionView;
 @property(nonatomic, assign) CGFloat maxHeightForGivenRow;
 @property(nonatomic, assign) BOOL isContentSizeFinalized;
+@property(nonatomic, strong) JKImageObjectModel *imageModel;
 @end
 
 @implementation JKCollectionViewFlowLayout
@@ -72,6 +76,8 @@ static NSString *const customLayoutCell =
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
 
     for (NSInteger section = 0; section < sectionCount; section++) {
+
+
         NSInteger itemCount =
             [self.collectionView numberOfItemsInSection:section];
 
@@ -107,10 +113,22 @@ static NSString *const customLayoutCell =
     // Critical height increase label height for each 38 increase in input
     // string length
     // TO DO
-    CGFloat randomHeightOfCurrentCell = 305; // cellMinimumHeight + arc4random()
-                                             // % (cellMaximumHeight -
-                                             // cellMinimumHeight);
 
+    self.imageModel =
+        (JKImageObjectModel *)self.listOfPhotos[indexPath.section];
+
+    DLog(@"Section number %d and height increment %f", indexPath.section,
+         self.imageModel.heightToIncrementForCell);
+
+    CGFloat randomHeightOfCurrentCell =
+        305 +
+        stepIncrementForCellHeight *
+            (self.imageModel.heightToIncrementForCell - 1);
+    // cellMinimumHeight + arc4random()
+    // % (cellMaximumHeight -
+    // cellMinimumHeight);
+
+    DLog(@"%f random height of cell", randomHeightOfCurrentCell);
 
     if (!self.isContentSizeFinalized) {
         if (randomHeightOfCurrentCell > self.maxHeightForGivenRow) {
