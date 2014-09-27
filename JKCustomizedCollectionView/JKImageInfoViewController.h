@@ -16,4 +16,7 @@
 
 @property (nonatomic,strong) JKImageObjectModel* imageInformation;
 @property (nonatomic,strong) JKImageAuthorObjectModel* imageAuthorInformation;
+
+
+@property (nonatomic,assign) CGPoint endingCoordinateOnScreen;
 @end

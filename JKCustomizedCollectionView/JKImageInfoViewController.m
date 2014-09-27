@@ -18,8 +18,11 @@ static NSString *informationCellIdentifier = @"infocell";
 @interface JKImageInfoViewController ()
 @property(weak, nonatomic) IBOutlet UITableView *imageInfoTableView;
 @property(strong, nonatomic) SDWebImageManager *manager;
-
 @property(strong, nonatomic) NSArray *imageInformationAttributesCollection;
+
+//Close the current extra information view
+- (IBAction)closeViewButtonPressed:(id)sender;
+
 @end
 
 @implementation JKImageInfoViewController
@@ -300,4 +303,29 @@ static NSString *informationCellIdentifier = @"infocell";
     return 70;
 }
 
+- (IBAction)closeViewButtonPressed:(id)sender {
+    
+    [UIView animateWithDuration:defaultAnimationDuration
+                          delay:0.0
+         usingSpringWithDamping:1.0
+          initialSpringVelocity:1
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         
+                         self.view.frame=CGRectMake(self.endingCoordinateOnScreen.x, self.endingCoordinateOnScreen.y, self.view.frame.size.width, self.view.frame.size.height);
+                         
+                         self.view.transform =
+                         CGAffineTransformMakeScale(0, 0);
+                     }
+                     completion:^(BOOL finished) {
+                         // Literally remove the view from current parent view controller's
+                         // children hierarchy
+                         [self
+                          willMoveToParentViewController:nil];
+                         [self.view removeFromSuperview];
+                         [self removeFromParentViewController];
+                     }];
+    
+    
+}
 @end

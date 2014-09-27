@@ -10,6 +10,7 @@
 		91100F0019D18C9300D23FAC /* JKImageObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100EFF19D18C9300D23FAC /* JKImageObjectModel.m */; };
 		91100F0319D18CA700D23FAC /* JKImageAuthorObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */; };
 		91AA40E819D70413009CB397 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AA40E719D70413009CB397 /* noImage.png */; };
+		91AA40EA19D744E1009CB397 /* closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AA40E919D744E1009CB397 /* closeButton.png */; };
 		91AE2D2219C12E3900AA36C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2119C12E3900AA36C8 /* Foundation.framework */; };
 		91AE2D2419C12E3900AA36C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */; };
 		91AE2D2619C12E3900AA36C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2519C12E3900AA36C8 /* UIKit.framework */; };
@@ -53,6 +54,7 @@
 		91100F0119D18CA700D23FAC /* JKImageAuthorObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKImageAuthorObjectModel.h; sourceTree = "<group>"; };
 		91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageAuthorObjectModel.m; sourceTree = "<group>"; };
 		91AA40E719D70413009CB397 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
+		91AA40E919D744E1009CB397 /* closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButton.png; sourceTree = "<group>"; };
 		91AE2D1E19C12E3900AA36C8 /* JKCustomizedCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKCustomizedCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91AE2D2119C12E3900AA36C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				91AA40E719D70413009CB397 /* noImage.png */,
+				91AA40E919D744E1009CB397 /* closeButton.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			files = (
 				91AE2D3A19C12E3900AA36C8 /* Images.xcassets in Resources */,
 				91AE2D2C19C12E3900AA36C8 /* InfoPlist.strings in Resources */,
+				91AA40EA19D744E1009CB397 /* closeButton.png in Resources */,
 				91AA40E819D70413009CB397 /* noImage.png in Resources */,
 				91AE2D3519C12E3900AA36C8 /* PinterestCollectionView.storyboard in Resources */,
 			);

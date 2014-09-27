@@ -61,11 +61,12 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     [cell customizeCellWithPhotoDetails:self.listOfPhotos[indexPath.section]];
 
 
-    __weak typeof(JKCollectionViewCustomizedCell *)weakCell = cell;
+    CGFloat originatingXCoordinate = cell.frame.origin.x - 190;
+    CGFloat originatingYCoordinate = cell.frame.origin.y + 50;
+
+
     cell.getImageInfo = ^(JKImageObjectModel *imageInfoForSelectedItem) {
 
-        __strong __typeof(JKCollectionViewCustomizedCell *)strongCell =
-            weakCell;
 
         JKImageInfoViewController *imageInformationController =
             (JKImageInfoViewController *)[self.storyboard
@@ -73,9 +74,12 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         imageInformationController.imageInformation = imageInfoForSelectedItem;
         imageInformationController.extraInformationType = ExtraImageInformation;
 
-        imageInformationController.view.frame = CGRectMake(
-            strongCell.frame.origin.x - 190, strongCell.frame.origin.y + 50,
-            currentViewWidth, currentViewHeight);
+
+        imageInformationController.view.frame =
+            CGRectMake(originatingXCoordinate, originatingYCoordinate,
+                       currentViewWidth, currentViewHeight);
+        imageInformationController.endingCoordinateOnScreen =
+            CGPointMake(originatingXCoordinate, originatingYCoordinate);
 
 
         [self showExtraInformationViewWithViewController:
@@ -85,8 +89,6 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     cell.getAuthorInfo =
         ^(JKImageAuthorObjectModel *authorInfoForSelectedItem) {
 
-        __strong __typeof(JKCollectionViewCustomizedCell *)strongCell =
-            weakCell;
 
         JKImageInfoViewController *authorInformationController =
             (JKImageInfoViewController *)[self.storyboard
@@ -96,10 +98,11 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         authorInformationController.extraInformationType =
             ExtraImageAuthorInformation;
 
-        authorInformationController.view.frame = CGRectMake(
-            strongCell.frame.origin.x - 80, strongCell.frame.origin.y + 50,
-            currentViewWidth, currentViewHeight);
-
+        authorInformationController.view.frame =
+            CGRectMake(originatingXCoordinate, originatingYCoordinate,
+                       currentViewWidth, currentViewHeight);
+        authorInformationController.endingCoordinateOnScreen =
+            CGPointMake(originatingXCoordinate, originatingYCoordinate);
 
         [self showExtraInformationViewWithViewController:
                   authorInformationController];
@@ -208,4 +211,6 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         }
         completion:^(BOOL finished) { DLog(@"Finished"); }];
 }
+
+
 @end
