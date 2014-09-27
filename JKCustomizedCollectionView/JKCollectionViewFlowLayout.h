@@ -11,12 +11,13 @@
 
 @interface JKCollectionViewFlowLayout : UICollectionViewFlowLayout
 
-@property (nonatomic) UIEdgeInsets itemInsets;
-@property (nonatomic) CGSize itemSize;
-@property (nonatomic) CGFloat interItemSpacingY;
-@property (nonatomic) NSInteger numberOfColumns;
-@property (nonatomic, strong) NSArray* listOfPhotos;
-@property (nonatomic,strong) JKPinterestCollectionViewController* collectionViewMainController;
+@property(nonatomic) UIEdgeInsets itemInsets;
+@property(nonatomic) CGSize itemSize;
+@property(nonatomic) CGFloat interItemSpacingY;
+@property(nonatomic) NSInteger numberOfColumns;
+@property(nonatomic, strong) NSArray *listOfPhotos;
+@property(nonatomic, strong)
+    JKPinterestCollectionViewController *collectionViewMainController;
 - (id)init;
-
+- (void)setup;
 @end

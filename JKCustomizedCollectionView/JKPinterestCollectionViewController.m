@@ -112,6 +112,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (IBAction)getImagesButtonPressed:(UIButton *)sender {
 
+
+    [self.mainCollectionViewLayout setup];
     [self.activityIndicator startAnimating];
 
     NSString *stringWithStrippedSpaces =
