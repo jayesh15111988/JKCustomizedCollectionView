@@ -16,15 +16,19 @@
 @property(weak, nonatomic) IBOutlet UILabel *imageName;
 @property(weak, nonatomic) IBOutlet UILabel *dateAdded;
 @property(weak, nonatomic) IBOutlet UILabel *imageDescription;
-- (void)customizeCellWithPhotoDetails:(NSDictionary *)photoDetails;
+@property(weak, nonatomic) IBOutlet UIButton *getImageInfoButton;
+@property(weak, nonatomic) IBOutlet UIButton *getAuthorInfoButton;
+@property(strong, nonatomic) JKImageObjectModel *individualImageProperties;
+
+- (void)customizeCellWithPhotoDetails;
 
 @property(strong, nonatomic) JKImageObjectModel *imageModel;
 @property(strong, nonatomic) JKImageAuthorObjectModel *imageAuthorModel;
 
-typedef void (^imageInfoBlock)(JKImageObjectModel *imageInfo);
+typedef void (^imageInfoBlock)();
 @property(strong, nonatomic) imageInfoBlock getImageInfo;
 
-typedef void (^authorInfoBlock)(JKImageAuthorObjectModel *authorInfo);
+typedef void (^authorInfoBlock)();
 @property(strong, nonatomic) authorInfoBlock getAuthorInfo;
 
 

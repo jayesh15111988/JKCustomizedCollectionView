@@ -23,7 +23,22 @@
 
 static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
-@interface JKPinterestCollectionViewController ()
+@interface CustomTapGestureRecognizer : UITapGestureRecognizer
+
+@property (nonatomic, strong) JKImageAuthorObjectModel *imageAuthorModel;
+@property (nonatomic, strong) JKImageObjectModel *imageModel;
+
+
+@end
+
+
+
+
+@implementation CustomTapGestureRecognizer
+
+@end
+
+@interface JKPinterestCollectionViewController () <UIGestureRecognizerDelegate>
 @property(weak, nonatomic) IBOutlet UICollectionView *mainCollectionView;
 @property(weak, nonatomic)
     IBOutlet JKCollectionViewFlowLayout *mainCollectionViewLayout;
@@ -58,54 +73,44 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
                                                   forIndexPath:indexPath];
 
-    [cell customizeCellWithPhotoDetails:self.listOfPhotos[indexPath.section]];
+
+    cell.individualImageProperties = self.listOfPhotos[indexPath.section];
+    [cell customizeCellWithPhotoDetails];
 
 
-    CGFloat originatingXCoordinate = cell.frame.origin.x - 190;
-    CGFloat originatingYCoordinate = cell.frame.origin.y + 50;
 
 
-    cell.getImageInfo = ^(JKImageObjectModel *imageInfoForSelectedItem) {
+    CustomTapGestureRecognizer *imageInfoButtonTapRecognizer =
+        [[CustomTapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(imageInformationButtonTapped:)];
+    
+    imageInfoButtonTapRecognizer.imageModel=cell.individualImageProperties;
+    
+    
+    CustomTapGestureRecognizer *authorInfoButtonTapRecognizer =
+        [[CustomTapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(authorInformationButtonTapped:)];
+    authorInfoButtonTapRecognizer.imageAuthorModel=cell.individualImageProperties.authorModelForCurrentImage;
+    
+    
+    [imageInfoButtonTapRecognizer setDelegate:self];
+    [authorInfoButtonTapRecognizer setDelegate:self];
+
+    [cell.getImageInfoButton addGestureRecognizer:imageInfoButtonTapRecognizer];
+    [cell.getAuthorInfoButton
+        addGestureRecognizer:authorInfoButtonTapRecognizer];
+
+    //    [cell.getAuthorInfoButton addGestureRecognizer:tap];
 
 
-        JKImageInfoViewController *imageInformationController =
-            (JKImageInfoViewController *)[self.storyboard
-                instantiateViewControllerWithIdentifier:@"imageinfo"];
-        imageInformationController.imageInformation = imageInfoForSelectedItem;
-        imageInformationController.extraInformationType = ExtraImageInformation;
+    cell.getImageInfo = ^() {
 
-
-        imageInformationController.view.frame =
-            CGRectMake(originatingXCoordinate, originatingYCoordinate,
-                       currentViewWidth, currentViewHeight);
-        imageInformationController.endingCoordinateOnScreen =
-            CGPointMake(originatingXCoordinate, originatingYCoordinate);
-
-
-        [self showExtraInformationViewWithViewController:
-                  imageInformationController];
     };
 
-    cell.getAuthorInfo =
-        ^(JKImageAuthorObjectModel *authorInfoForSelectedItem) {
+    cell.getAuthorInfo = ^() {
 
 
-        JKImageInfoViewController *authorInformationController =
-            (JKImageInfoViewController *)[self.storyboard
-                instantiateViewControllerWithIdentifier:@"imageinfo"];
-        authorInformationController.imageAuthorInformation =
-            authorInfoForSelectedItem;
-        authorInformationController.extraInformationType =
-            ExtraImageAuthorInformation;
-
-        authorInformationController.view.frame =
-            CGRectMake(originatingXCoordinate, originatingYCoordinate,
-                       currentViewWidth, currentViewHeight);
-        authorInformationController.endingCoordinateOnScreen =
-            CGPointMake(originatingXCoordinate, originatingYCoordinate);
-
-        [self showExtraInformationViewWithViewController:
-                  authorInformationController];
+        
     };
     return cell;
 }
@@ -210,6 +215,66 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
                 CGAffineTransformMakeScale(1, 1);
         }
         completion:^(BOOL finished) { DLog(@"Finished"); }];
+}
+
+- (void)imageInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
+    NSLog(@"%f %f", [sender locationInView:self.view].x,
+          [sender locationInView:self.view].y);
+    
+    CGFloat originatingXCoordinate = [sender locationInView:self.view].x-250;
+    CGFloat originatingYCoordinate = [sender locationInView:self.view].y-300;
+    
+    JKImageInfoViewController *imageInformationController =
+    (JKImageInfoViewController *)[self.storyboard
+                                  instantiateViewControllerWithIdentifier:@"imageinfo"];
+    imageInformationController.imageInformation =
+    sender.imageModel;
+    imageInformationController.extraInformationType = ExtraImageInformation;
+    
+    
+    imageInformationController.view.frame =
+    CGRectMake(originatingXCoordinate, originatingYCoordinate,
+               currentViewWidth, currentViewHeight);
+    imageInformationController.endingCoordinateOnScreen =
+    CGPointMake(originatingXCoordinate, originatingYCoordinate);
+    
+    
+    [self showExtraInformationViewWithViewController:
+     imageInformationController];
+
+    
+}
+
+- (void)authorInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
+    NSLog(@"%f %f", [sender locationInView:self.view].x,
+          [sender locationInView:self.view].y);
+    
+    CGFloat originatingXCoordinate = [sender locationInView:self.view].x-250;
+    CGFloat originatingYCoordinate = [sender locationInView:self.view].y-300;
+    
+    JKImageInfoViewController *authorInformationController =
+    (JKImageInfoViewController *)[self.storyboard
+                                  instantiateViewControllerWithIdentifier:@"imageinfo"];
+    authorInformationController.imageAuthorInformation =
+    sender.imageAuthorModel;
+    authorInformationController.extraInformationType =
+    ExtraImageAuthorInformation;
+    
+    authorInformationController.view.frame =
+    CGRectMake(originatingXCoordinate, originatingYCoordinate,
+               currentViewWidth, currentViewHeight);
+    authorInformationController.endingCoordinateOnScreen =
+    CGPointMake(originatingXCoordinate, originatingYCoordinate);
+    
+    [self showExtraInformationViewWithViewController:
+     authorInformationController];
+    
+    
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+       shouldReceiveTouch:(UITouch *)touch {
+    return YES;
 }
 
 

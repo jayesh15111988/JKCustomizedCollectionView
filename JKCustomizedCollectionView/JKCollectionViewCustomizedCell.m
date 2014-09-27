@@ -17,9 +17,8 @@
 
 @property(strong, nonatomic) SDWebImageManager *manager;
 @property(strong, nonatomic) NSURL *individualImageURL;
-@property(strong, nonatomic) JKImageObjectModel *individualImageProperties;
-- (IBAction)imageInfoButtonClicked:(id)sender;
-- (IBAction)authorInfoButtonClicked:(id)sender;
+
+
 
 @end
 
@@ -32,30 +31,38 @@
     return self;
 }
 
-- (void)customizeCellWithPhotoDetails:(JKImageObjectModel *)photoDetails {
+- (void)customizeCellWithPhotoDetails{
 
 
-    self.individualImageProperties = photoDetails;
+    [self.getImageInfoButton addTarget:self
+                                action:@selector(imageInfoButtonClicked:)
+                      forControlEvents:UIControlEventTouchUpInside];
+
+    [self.getAuthorInfoButton addTarget:self
+                                 action:@selector(authorInfoButtonClicked:)
+                       forControlEvents:UIControlEventTouchUpInside];
 
 
-    self.imageName.text = photoDetails.imageName;
-    self.dateAdded.text = photoDetails.takenOn;
 
 
-    self.imageDescription.text = photoDetails.imageDescription;
+    self.imageName.text = self.individualImageProperties.imageName;
+    self.dateAdded.text = self.individualImageProperties.takenOn;
 
-    self.imageDescription.numberOfLines = photoDetails.heightToIncrementForCell;
+
+    self.imageDescription.text = self.individualImageProperties.imageDescription;
+
+    self.imageDescription.numberOfLines = self.individualImageProperties.heightToIncrementForCell;
 
     CGRect imageDescriptionFrame = self.imageDescription.frame;
     imageDescriptionFrame.size.height =
-        stepIncrementForCellHeight * photoDetails.heightToIncrementForCell;
+        stepIncrementForCellHeight * self.individualImageProperties.heightToIncrementForCell;
     self.imageDescription.frame = imageDescriptionFrame;
 
     DLog(@"Height %f and number of lines %d",
          self.imageDescription.frame.size.height,
          self.imageDescription.numberOfLines);
 
-    
+
     __block CGFloat imageWidthToAdjust = 200;
 
     __weak typeof(self) weakSelf = self;
@@ -63,7 +70,7 @@
     self.imageView.alpha = 0;
 
     [[SDWebImageManager sharedManager]
-        downloadImageWithURL:photoDetails.iconImageURL
+        downloadImageWithURL:self.individualImageProperties.iconImageURL
         options:0
         progress:^(NSInteger receivedSize, NSInteger expectedSize) {}
         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
@@ -97,7 +104,7 @@
 - (IBAction)imageInfoButtonClicked:(id)sender {
     // Show extra image information if this button is pressed
     if (self.getImageInfo) {
-        self.getImageInfo(self.individualImageProperties);
+        self.getImageInfo();
     }
 }
 
@@ -105,7 +112,7 @@
     // Show author specific information if this button is pressed
     if (self.getAuthorInfo) {
         self.getAuthorInfo(
-            self.individualImageProperties.authorModelForCurrentImage);
+            );
     }
 }
 

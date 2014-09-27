@@ -134,9 +134,6 @@
                                                     <state key="normal" title="Image info">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="imageInfoButtonClicked:" destination="LR0-Em-gmC" eventType="touchUpInside" id="nha-VR-S53"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jayeshkawlijayeshkawlijayeshkawlijayeshk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V5B-Yd-Tfy">
                                                     <rect key="frame" x="10" y="272" width="290" height="21"/>
@@ -150,15 +147,14 @@
                                                     <state key="normal" title="Author info">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="authorInfoButtonClicked:" destination="LR0-Em-gmC" eventType="touchUpInside" id="XCZ-ZC-TAe"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
                                             <outlet property="dateAdded" destination="unM-fE-R1m" id="pKs-Sg-HKS"/>
+                                            <outlet property="getAuthorInfoButton" destination="Mfs-WR-Sqo" id="jTV-di-G9C"/>
+                                            <outlet property="getImageInfoButton" destination="JXz-B7-pm0" id="H7M-Fz-Hja"/>
                                             <outlet property="imageDescription" destination="V5B-Yd-Tfy" id="3c0-nB-2Yk"/>
                                             <outlet property="imageName" destination="34B-Hg-Hd2" id="mdN-V3-LTu"/>
                                             <outlet property="imageView" destination="h13-xf-eUo" id="hGT-6N-dbt"/>
