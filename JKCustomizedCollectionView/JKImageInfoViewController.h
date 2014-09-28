@@ -19,4 +19,5 @@
 
 
 @property (nonatomic,assign) CGPoint endingCoordinateOnScreen;
+-(void)removeCurrentViewControllerFromParent;
 @end

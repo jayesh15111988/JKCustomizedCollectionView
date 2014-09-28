@@ -325,26 +325,30 @@ static NSString *informationCellIdentifier = @"infocell";
 
 - (IBAction)closeViewButtonPressed:(id)sender {
 
+    [self removeCurrentViewControllerFromParent];
+}
+
+-(void)removeCurrentViewControllerFromParent{
     [UIView animateWithDuration:defaultAnimationDuration
-        delay:0.0
-        usingSpringWithDamping:1.0
-        initialSpringVelocity:1
-        options:UIViewAnimationOptionCurveLinear
-        animations:^{
-
-            self.view.frame = CGRectMake(self.endingCoordinateOnScreen.x,
-                                         self.endingCoordinateOnScreen.y,
-                                         self.view.frame.size.width,
-                                         self.view.frame.size.height);
-
-            self.view.transform = CGAffineTransformMakeScale(0, 0);
-        }
-        completion:^(BOOL finished) {
-            // Literally remove the view from current parent view controller's
-            // children hierarchy
-            [self willMoveToParentViewController:nil];
-            [self.view removeFromSuperview];
-            [self removeFromParentViewController];
-        }];
+                          delay:0.0
+         usingSpringWithDamping:1.0
+          initialSpringVelocity:1
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         
+                         self.view.frame = CGRectMake(self.endingCoordinateOnScreen.x,
+                                                      self.endingCoordinateOnScreen.y,
+                                                      self.view.frame.size.width,
+                                                      self.view.frame.size.height);
+                         
+                         self.view.transform = CGAffineTransformMakeScale(0, 0);
+                     }
+                     completion:^(BOOL finished) {
+                         // Literally remove the view from current parent view controller's
+                         // children hierarchy
+                         [self willMoveToParentViewController:nil];
+                         [self.view removeFromSuperview];
+                         [self removeFromParentViewController];
+                     }];
 }
 @end

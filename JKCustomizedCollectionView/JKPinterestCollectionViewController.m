@@ -50,6 +50,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 @property(weak, nonatomic) IBOutlet UITextField *numberOfResultsPerPage;
 @property(weak, nonatomic) IBOutlet UIView *initialWelcomeView;
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(nonatomic, strong)
+    JKImageInfoViewController *previousSelectedImageInfoViewController;
 
 // Error Message view elements
 @property(weak, nonatomic) IBOutlet UIView *errorMessageView;
@@ -266,6 +268,12 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (void)imageInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
 
+    // User cannot open multiple popup for given image information
+    if (self.previousSelectedImageInfoViewController) {
+        [self.previousSelectedImageInfoViewController
+                removeCurrentViewControllerFromParent];
+    }
+
 
     CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
     CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
@@ -276,6 +284,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     imageInformationController.imageInformation = sender.imageModel;
     imageInformationController.extraInformationType = ExtraImageInformation;
 
+    self.previousSelectedImageInfoViewController = imageInformationController;
 
     imageInformationController.view.frame =
         CGRectMake(originatingXCoordinate, originatingYCoordinate,
@@ -291,8 +300,15 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 - (void)authorInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
 
 
+    // User cannot open multiple popup for given photographer information
+    if (self.previousSelectedImageInfoViewController) {
+        [self.previousSelectedImageInfoViewController
+                removeCurrentViewControllerFromParent];
+    }
+
     CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
     CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
+
 
     JKImageInfoViewController *authorInformationController =
         (JKImageInfoViewController *)
@@ -301,6 +317,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         sender.imageAuthorModel;
     authorInformationController.extraInformationType =
         ExtraImageAuthorInformation;
+
+    self.previousSelectedImageInfoViewController = authorInformationController;
 
     authorInformationController.view.frame =
         CGRectMake(originatingXCoordinate, originatingYCoordinate,
