@@ -10,18 +10,35 @@
 
 @implementation UIImage (Utilities)
 
-- (UIImage *)imageWithImageScaledToWidth:(CGFloat)imageWidth {
-    
-    if(self.size.width<imageWidth){
-        imageWidth=self.size.width;
-    }
-    
-    CGFloat oldWidth = self.size.width;
-    CGFloat scaleFactor = imageWidth / oldWidth;
+- (UIImage *)imageWithImageScaledToDimension:(CGFloat)imageToScaleParameter
+                                 isWidth:(BOOL)isScalingWidth {
 
-    
-    
-    CGFloat newHeight = self.size.height * scaleFactor;
+    CGFloat oldWidth = self.size.width;
+    CGFloat oldHeight = self.size.width;
+
+    CGFloat scaleFactor = 1.0;
+
+
+    if (isScalingWidth) {
+        if (self.size.width > imageToScaleParameter) {
+        scaleFactor = imageToScaleParameter / oldWidth;
+        }
+        else{
+            return self;
+        }
+
+    } else {
+        if (self.size.height > imageToScaleParameter) {
+        scaleFactor = imageToScaleParameter / oldHeight;
+        }
+        else{
+            return self;
+        }
+
+    }
+
+
+    CGFloat newHeight = oldHeight * scaleFactor;
     CGFloat newWidth = oldWidth * scaleFactor;
 
     UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));

@@ -10,5 +10,5 @@
 
 @interface UIImage (Utilities)
 
-- (UIImage *)imageWithImageScaledToWidth:(CGFloat)imageWidth;
+- (UIImage *)imageWithImageScaledToDimension:(CGFloat)imageToScaleParameter isWidth:(BOOL)isScalingWidth;
 @end

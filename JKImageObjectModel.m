@@ -32,6 +32,8 @@
             URLWithString:[individualImageInfoDictionary[@"image_url"] isNull]
                               ? @""
                               : individualImageInfoDictionary[@"image_url"]];
+        
+        imageModel.iconImageBigURL=[self replaceWithBigURLWithOriginalString:[imageModel.iconImageURL absoluteString]];
         imageModel.apertureSize = individualImageInfoDictionary[@"aperture"];
         imageModel.camera = individualImageInfoDictionary[@"camera"];
         if (![individualImageInfoDictionary[@"created_at"] isNull]) {
@@ -105,6 +107,50 @@
 
 
     return (finalLengthOfLabel == 0) ? 1 : finalLengthOfLabel;
+}
+
++(NSURL*)replaceWithBigURLWithOriginalString:(NSString*)originalString{
+    
+    
+NSString* finalBigURLValue=@"";
+    
+    if(originalString){
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:@"/[0-9]*.(jpg|png|jpeg)"
+                                  options:NSRegularExpressionCaseInsensitive
+                                  error:&error];
+    
+    __block NSString *replacementString = @"";
+    
+    [regex enumerateMatchesInString:originalString
+                            options:0
+                              range:NSMakeRange(0, [originalString length])
+                         usingBlock:^(NSTextCheckingResult *match,
+                                      NSMatchingFlags flags, BOOL *stop) {
+                             
+                             // detect
+                             NSString *insideString = [originalString
+                                                       substringWithRange:[match rangeAtIndex:1]];
+                             
+                             // print
+                             replacementString = [NSString
+                                                  stringWithFormat:@"/4.%@", insideString];
+                         }];
+    
+    
+    NSString *stringURLWithBigImage = [regex
+                                stringByReplacingMatchesInString:originalString
+                                options:0
+                                range:NSMakeRange(0, [originalString length])
+                                       withTemplate:replacementString];
+    
+        finalBigURLValue=stringURLWithBigImage?:@"";
+        
+    }
+return [NSURL URLWithString:finalBigURLValue];
+    
 }
 
 @end

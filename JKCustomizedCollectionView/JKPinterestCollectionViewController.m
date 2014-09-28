@@ -12,6 +12,7 @@
 #import "JKConstantsCollection.h"
 #import "JKImageObjectModel.h"
 #import "NSString+Utilities.h"
+#import "JKFullImageDisplayControllerViewController.h"
 
 // Popup view controller for custom animation
 #import "UIViewController+MJPopupViewController.h"
@@ -27,7 +28,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 @property(nonatomic, strong) JKImageAuthorObjectModel *imageAuthorModel;
 @property(nonatomic, strong) JKImageObjectModel *imageModel;
-
+@property(nonatomic, strong) NSURL *remoteImageURL;
 
 @end
 
@@ -95,12 +96,25 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         cell.individualImageProperties.authorModelForCurrentImage;
 
 
+    CustomTapGestureRecognizer *displayFullImageButtonTapRecognizer =
+        [[CustomTapGestureRecognizer alloc]
+            initWithTarget:self
+                    action:@selector(displayFullImageButtonTapped:)];
+
+    displayFullImageButtonTapRecognizer.remoteImageURL =
+        cell.individualImageProperties.iconImageBigURL;
+
+
     [imageInfoButtonTapRecognizer setDelegate:self];
     [authorInfoButtonTapRecognizer setDelegate:self];
 
     [cell.getImageInfoButton addGestureRecognizer:imageInfoButtonTapRecognizer];
     [cell.getAuthorInfoButton
         addGestureRecognizer:authorInfoButtonTapRecognizer];
+    [cell.displayFullImageButton
+        addGestureRecognizer:displayFullImageButtonTapRecognizer];
+
+
     return cell;
 }
 
@@ -144,6 +158,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (IBAction)getImagesButtonPressed:(UIButton *)sender {
 
+    sender.enabled = NO;
 
     if (![self.numberOfResultsPerPage.text isThisStringNumeric] ||
         ![self.pageNumber.text isThisStringNumeric]) {
@@ -189,6 +204,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         andParameters:nil
         completion:^(id successResponse) {
 
+            sender.enabled = YES;
+
             self.listOfPhotos = [JKImageObjectModel
                 getObjectModelsFromImageInfoDictionary:successResponse[
                                                            @"photos"]];
@@ -199,6 +216,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         }
         failure:^(NSError *errorResponse) {
 
+            sender.enabled = YES;
             [self
                 showAlertWithErrorMessage:
                     [NSString
@@ -210,7 +228,10 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 }
 
 - (void)showExtraInformationViewWithViewController:
-            (JKImageInfoViewController *)extraImageInformationController {
+            (UIViewController *)extraImageInformationController
+                               andPositionOnScreen:
+                                   (CGPoint)positionOnScreenForNewView {
+
     extraImageInformationController.view.transform =
         CGAffineTransformMakeScale(0.1, 0.1);
 
@@ -229,7 +250,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
             __strong __typeof(weakSelf) strongSelf = weakSelf;
             extraImageInformationController.view.frame = CGRectMake(
-                strongSelf.view.center.x + 125, 400,
+                strongSelf.view.center.x + positionOnScreenForNewView.x,
+                positionOnScreenForNewView.y,
                 extraImageInformationController.view.frame.size.width,
                 extraImageInformationController.view.frame.size.height);
 
@@ -243,8 +265,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 #pragma mark touch gesture recognizer delegate methods
 
 - (void)imageInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
-    NSLog(@"%f %f", [sender locationInView:self.view].x,
-          [sender locationInView:self.view].y);
+
 
     CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
     CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
@@ -263,13 +284,12 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         CGPointMake(originatingXCoordinate, originatingYCoordinate);
 
 
-    [self
-        showExtraInformationViewWithViewController:imageInformationController];
+    [self showExtraInformationViewWithViewController:imageInformationController
+                                 andPositionOnScreen:CGPointMake(125, 400)];
 }
 
 - (void)authorInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
-    NSLog(@"%f %f", [sender locationInView:self.view].x,
-          [sender locationInView:self.view].y);
+
 
     CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
     CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
@@ -288,8 +308,31 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     authorInformationController.endingCoordinateOnScreen =
         CGPointMake(originatingXCoordinate, originatingYCoordinate);
 
-    [self
-        showExtraInformationViewWithViewController:authorInformationController];
+    [self showExtraInformationViewWithViewController:authorInformationController
+                                 andPositionOnScreen:CGPointMake(125, 400)];
+}
+
+- (void)displayFullImageButtonTapped:(CustomTapGestureRecognizer *)sender {
+
+
+    // 1024 1024/2 - 1024/8
+    // 768 768/2 - 768/8
+    CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 384;
+    CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 512;
+
+    JKFullImageDisplayControllerViewController *fullImageDisplayController =
+        (JKFullImageDisplayControllerViewController *)[self.storyboard
+            instantiateViewControllerWithIdentifier:@"fullimagedisplay"];
+    fullImageDisplayController.remoteImageFullURL = sender.remoteImageURL;
+    fullImageDisplayController.endingCoordinateOnScreen =
+        CGPointMake(originatingXCoordinate, originatingYCoordinate);
+    fullImageDisplayController.view.frame =
+        CGRectMake(originatingXCoordinate, originatingYCoordinate,
+                   fullImageDisplayController.view.frame.size.width,
+                   fullImageDisplayController.view.frame.size.height);
+
+    [self showExtraInformationViewWithViewController:fullImageDisplayController
+                                 andPositionOnScreen:CGPointMake(-40, 175)];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -310,4 +353,5 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         }
         completion:^(BOOL finished) {}];
 }
+
 @end

@@ -78,7 +78,7 @@
 
             if (image) {
 
-                image = [image imageWithImageScaledToWidth:imageWidthToAdjust];
+                image = [image imageWithImageScaledToDimension:imageWidthToAdjust isWidth:YES];
                 [strongSelf.imageView setImage:image];
             } else {
                 [strongSelf.imageView

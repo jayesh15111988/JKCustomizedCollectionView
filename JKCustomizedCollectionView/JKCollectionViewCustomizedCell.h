@@ -18,6 +18,8 @@
 @property(weak, nonatomic) IBOutlet UILabel *imageDescription;
 @property(weak, nonatomic) IBOutlet UIButton *getImageInfoButton;
 @property(weak, nonatomic) IBOutlet UIButton *getAuthorInfoButton;
+@property (weak, nonatomic) IBOutlet UIButton *displayFullImageButton;
+
 @property(strong, nonatomic) JKImageObjectModel *individualImageProperties;
 
 - (void)customizeCellWithPhotoDetails;

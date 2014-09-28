@@ -30,7 +30,6 @@
 @property(nonatomic, strong) NSString *shutterSpeed;
 @property(nonatomic, strong) NSString *takenOn;
 @property(nonatomic, strong) NSString *views;
-@property(nonatomic, strong) UIImage *scaledDownImage;
 @property (nonatomic,assign) CGFloat heightToIncrementForCell;
 @property (nonatomic,strong) JKImageAuthorObjectModel* authorModelForCurrentImage;
 

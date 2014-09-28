@@ -11,6 +11,7 @@
 		91100F0319D18CA700D23FAC /* JKImageAuthorObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */; };
 		91AA40E819D70413009CB397 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AA40E719D70413009CB397 /* noImage.png */; };
 		91AA40EA19D744E1009CB397 /* closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AA40E919D744E1009CB397 /* closeButton.png */; };
+		91AA40EE19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AA40ED19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.m */; };
 		91AE2D2219C12E3900AA36C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2119C12E3900AA36C8 /* Foundation.framework */; };
 		91AE2D2419C12E3900AA36C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */; };
 		91AE2D2619C12E3900AA36C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AE2D2519C12E3900AA36C8 /* UIKit.framework */; };
@@ -55,6 +56,8 @@
 		91100F0219D18CA700D23FAC /* JKImageAuthorObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKImageAuthorObjectModel.m; sourceTree = "<group>"; };
 		91AA40E719D70413009CB397 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		91AA40E919D744E1009CB397 /* closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButton.png; sourceTree = "<group>"; };
+		91AA40EC19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFullImageDisplayControllerViewController.h; sourceTree = "<group>"; };
+		91AA40ED19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFullImageDisplayControllerViewController.m; sourceTree = "<group>"; };
 		91AE2D1E19C12E3900AA36C8 /* JKCustomizedCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKCustomizedCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91AE2D2119C12E3900AA36C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91AE2D2319C12E3900AA36C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,9 +134,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		91AA40EB19D7ADBE009CB397 /* Full Image Display Controller */ = {
+			isa = PBXGroup;
+			children = (
+				91AA40EC19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.h */,
+				91AA40ED19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.m */,
+			);
+			name = "Full Image Display Controller";
+			sourceTree = "<group>";
+		};
 		91AE2D1519C12E3900AA36C8 = {
 			isa = PBXGroup;
 			children = (
+				91AA40EB19D7ADBE009CB397 /* Full Image Display Controller */,
 				91100EF819D18C0600D23FAC /* Model */,
 				91AE943C19C521C600907BDA /* NSString Utilities */,
 				91AE942E19C51CC100907BDA /* JKPopUpViewController */,
@@ -436,6 +449,7 @@
 				91AE944319C5221900907BDA /* JKExtraImageInformationTableViewCell.m in Sources */,
 				91AE943A19C51DBE00907BDA /* MJPopupBackgroundView.m in Sources */,
 				91AE2D6719C29EAE00AA36C8 /* JKConstantsCollection.m in Sources */,
+				91AA40EE19D7ADE2009CB397 /* JKFullImageDisplayControllerViewController.m in Sources */,
 				91AE2D3219C12E3900AA36C8 /* AppDelegate.m in Sources */,
 				91100F0019D18C9300D23FAC /* JKImageObjectModel.m in Sources */,
 				91AE2D6419C29E8600AA36C8 /* UIImage+Utilities.m in Sources */,
