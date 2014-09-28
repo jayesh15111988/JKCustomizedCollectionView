@@ -15,6 +15,8 @@
 
 - (IBAction)closeButtonPressed:(id)sender;
 @property(weak, nonatomic) IBOutlet UIImageView *fullImageDisplayImageView;
+@property(weak, nonatomic)
+    IBOutlet UIActivityIndicatorView *activityIndicatorForLoadingImage;
 
 
 @end
@@ -24,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self.activityIndicatorForLoadingImage startAnimating];
     __weak typeof(self) weakSelf = self;
 
     __block CGFloat imageWidthToAdjust = 1020;
@@ -40,6 +43,7 @@
 
             __strong __typeof(weakSelf) strongSelf = weakSelf;
 
+            [strongSelf.activityIndicatorForLoadingImage stopAnimating];
 
             if (image) {
 

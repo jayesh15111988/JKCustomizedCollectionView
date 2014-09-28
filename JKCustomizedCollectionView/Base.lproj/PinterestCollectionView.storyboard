@@ -127,11 +127,17 @@
                                     <action selector="closeButtonPressed:" destination="NBB-bS-hR1" eventType="touchUpInside" id="nFH-Er-sFc"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="gOR-cA-Qb1">
+                                <rect key="frame" x="495" y="710" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="color" red="1" green="0.48692554430000001" blue="0.15407261259999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="activityIndicatorForLoadingImage" destination="gOR-cA-Qb1" id="Xcc-8j-YVa"/>
                         <outlet property="fullImageDisplayImageView" destination="HiP-oL-CVh" id="EeY-fM-LBQ"/>
                     </connections>
                 </viewController>
@@ -271,7 +277,7 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="I3s-Fo-7s5"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Apple" borderStyle="roundedRect" placeholder="Search Term" minimumFontSize="17" id="VZd-30-wsB">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Silicon Valley" borderStyle="roundedRect" placeholder="Search Term" minimumFontSize="17" id="VZd-30-wsB">
                                         <rect key="frame" x="379" y="59" width="176" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
