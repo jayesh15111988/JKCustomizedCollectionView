@@ -15,4 +15,5 @@
 - (NSString*)convertmySQLStringToDateFormattedString;
 -(BOOL)isNull;
 -(BOOL)isThisStringNumeric;
+-(NSString*)stripWhiteSpacesAndNewlinesFromString;
 @end

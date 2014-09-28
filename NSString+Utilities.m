@@ -75,4 +75,31 @@ static NSCharacterSet *characterSetWithNoDigits;
     return ([self rangeOfCharacterFromSet:characterSetWithNoDigits].location ==
             NSNotFound);
 }
+
+-(NSString*)stripWhiteSpacesAndNewlinesFromString{
+    
+    /*Shamelessly copied from
+     
+    http://stackoverflow.com/questions/758212/collapse-sequences-of-white-space-into-a-single-character
+    For More Info:
+    Possible alternative regex patterns:
+     
+    Replace only space: [ ]+
+    Replace space and tabs: [ \\t]+
+    Replace space, tabs and newlines: \\s+
+     
+     */
+    
+    if(self && [self length]){
+    NSString *squashed = [self stringByReplacingOccurrencesOfString:@"\\s+"
+                                                             withString:@" "
+                                                                options:NSRegularExpressionSearch
+                                                                  range:NSMakeRange(0, self.length)];
+    
+    return [squashed stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    return @"Not Specified";
+}
+
+
 @end

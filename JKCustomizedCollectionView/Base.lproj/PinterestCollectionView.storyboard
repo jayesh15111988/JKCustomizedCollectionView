@@ -96,7 +96,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="4dj-OL-vPT">
                                 <rect key="frame" x="0.0" y="122" width="1024" height="646"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tMB-wq-VTi" customClass="JKCollectionViewFlowLayout">
                                     <size key="itemSize" width="310" height="305"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,6 +145,13 @@
                                                     <rect key="frame" x="170" y="230" width="80" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Author info">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Yya-dW-ZgL">
+                                                    <rect key="frame" x="55" y="0.0" width="200" height="155"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -248,7 +255,7 @@
                                 <color key="color" red="1" green="0.56211517820000001" blue="0.2481714086" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" id="xqb-49-PhK">
-                                <rect key="frame" x="0.0" y="122" width="1024" height="646"/>
+                                <rect key="frame" x="0.0" y="1122" width="1024" height="646"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter search parameters and then click Refresh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Cj-PY-l7l">

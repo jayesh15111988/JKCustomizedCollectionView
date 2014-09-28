@@ -43,7 +43,11 @@
         }
 
         imageModel.imageDescription =
-            individualImageInfoDictionary[@"description"];
+            [individualImageInfoDictionary[@"description"] isNull]
+                ? notSpecifiedDisplayString
+                : individualImageInfoDictionary[@"description"];
+        imageModel.imageDescription =
+            [imageModel.imageDescription stripWhiteSpacesAndNewlinesFromString];
         imageModel.favoritesCount = [NSString
             stringWithFormat:@"%@",
                              individualImageInfoDictionary[@"favorites_count"]];
@@ -74,10 +78,10 @@
         imageModel.views = [NSString
             stringWithFormat:@"%@",
                              individualImageInfoDictionary[@"times_viewed"]];
-        imageModel.heightToIncrementForCell =
-            [self getNumberOfLinesForGivenDescription:imageModel.description];
+        imageModel.heightToIncrementForCell = [self
+            getNumberOfLinesForGivenDescription:imageModel.imageDescription];
 
-        DLog(@"%f", imageModel.heightToIncrementForCell);
+       
 
         imageModel.authorModelForCurrentImage = [JKImageAuthorObjectModel
             getObjectModelsFromImageAuthorInfoDictionary:
@@ -94,10 +98,10 @@
 
     NSInteger lengthOfDescription =
         [imageDescription isNull] ? 0 : [imageDescription length];
-    
+
     NSInteger finalLengthOfLabel = 0;
 
-    finalLengthOfLabel = (NSInteger)lengthOfDescription / 38.0;
+    finalLengthOfLabel = ceil(lengthOfDescription / 38.0);
 
 
     return (finalLengthOfLabel == 0) ? 1 : finalLengthOfLabel;

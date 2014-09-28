@@ -33,7 +33,7 @@
 
 - (void)customizeCellWithPhotoDetails{
 
-
+    DLog(@"%@ %@ %@ %f",self.individualImageProperties.imageName,self.individualImageProperties.takenOn,self.individualImageProperties.imageDescription,self.individualImageProperties.heightToIncrementForCell);
 
 
 
@@ -92,6 +92,7 @@
                 completion:^(BOOL finished) {}];
         }];
 }
+
 
 
 
