@@ -19,8 +19,10 @@ static NSString *informationCellIdentifier = @"infocell";
 @property(weak, nonatomic) IBOutlet UITableView *imageInfoTableView;
 @property(strong, nonatomic) SDWebImageManager *manager;
 @property(strong, nonatomic) NSArray *imageInformationAttributesCollection;
+@property(weak, nonatomic) IBOutlet UILabel *extraImageInformationLabel;
 
-//Close the current extra information view
+
+// Close the current extra information view
 - (IBAction)closeViewButtonPressed:(id)sender;
 
 @end
@@ -39,6 +41,8 @@ static NSString *informationCellIdentifier = @"infocell";
                    currentViewWidth, currentViewHeight);
 
     if (self.extraInformationType == ExtraImageAuthorInformation) {
+
+        self.extraImageInformationLabel.text = @"Photographer Information";
         self.imageInformationAttributesCollection = @[
             @{ @"displayName" : @"Icon",
                @"backgroundName" : @"userpic_url" },
@@ -74,6 +78,9 @@ static NSString *informationCellIdentifier = @"infocell";
             }
         ];
     } else if (self.extraInformationType == ExtraImageInformation) {
+
+        self.extraImageInformationLabel.text = @"Photograph Information";
+
         self.imageInformationAttributesCollection = @[
             @{ @"displayName" : @"Icon",
                @"backgroundName" : @"image_url" },
@@ -294,7 +301,9 @@ static NSString *informationCellIdentifier = @"infocell";
     }
     DLog(@"Class %@", [attributeValue class]);
     cell.imageAttributeValue.text =
-        [attributeValue isNull] ? notSpecifiedDisplayString : attributeValue;
+        ([attributeValue isNull] || ![attributeValue length])
+            ? notSpecifiedDisplayString
+            : attributeValue;
     return cell;
 }
 
@@ -304,28 +313,27 @@ static NSString *informationCellIdentifier = @"infocell";
 }
 
 - (IBAction)closeViewButtonPressed:(id)sender {
-    
+
     [UIView animateWithDuration:defaultAnimationDuration
-                          delay:0.0
-         usingSpringWithDamping:1.0
-          initialSpringVelocity:1
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         
-                         self.view.frame=CGRectMake(self.endingCoordinateOnScreen.x, self.endingCoordinateOnScreen.y, self.view.frame.size.width, self.view.frame.size.height);
-                         
-                         self.view.transform =
-                         CGAffineTransformMakeScale(0, 0);
-                     }
-                     completion:^(BOOL finished) {
-                         // Literally remove the view from current parent view controller's
-                         // children hierarchy
-                         [self
-                          willMoveToParentViewController:nil];
-                         [self.view removeFromSuperview];
-                         [self removeFromParentViewController];
-                     }];
-    
-    
+        delay:0.0
+        usingSpringWithDamping:1.0
+        initialSpringVelocity:1
+        options:UIViewAnimationOptionCurveLinear
+        animations:^{
+
+            self.view.frame = CGRectMake(self.endingCoordinateOnScreen.x,
+                                         self.endingCoordinateOnScreen.y,
+                                         self.view.frame.size.width,
+                                         self.view.frame.size.height);
+
+            self.view.transform = CGAffineTransformMakeScale(0, 0);
+        }
+        completion:^(BOOL finished) {
+            // Literally remove the view from current parent view controller's
+            // children hierarchy
+            [self willMoveToParentViewController:nil];
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+        }];
 }
 @end
