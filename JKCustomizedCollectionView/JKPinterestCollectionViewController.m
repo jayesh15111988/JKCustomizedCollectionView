@@ -147,9 +147,10 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
     self.errorMessageLabel.text = @"No Errors";
 
+
     [UIView animateWithDuration:1
         delay:0
-        usingSpringWithDamping:0.3
+        usingSpringWithDamping:0.7
         initialSpringVelocity:5
         options:UIViewAnimationOptionCurveLinear
         animations:^{
@@ -160,14 +161,16 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (IBAction)getImagesButtonPressed:(UIButton *)sender {
 
-    sender.enabled = NO;
 
     if (![self.numberOfResultsPerPage.text isThisStringNumeric] ||
         ![self.pageNumber.text isThisStringNumeric]) {
+
         [self
             showAlertWithErrorMessage:@"Please Enter valid search parameters"];
         return;
     }
+
+    sender.enabled = NO;
 
     if ([self.numberOfResultsPerPage.text integerValue] > 100) {
         [self showAlertWithErrorMessage:@"Maximum value of number of results "
@@ -274,6 +277,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
                 removeCurrentViewControllerFromParent];
     }
 
+    __weak typeof(self) weakSelf = self;
 
     CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
     CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
@@ -283,6 +287,12 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         [self.storyboard instantiateViewControllerWithIdentifier:@"imageinfo"];
     imageInformationController.imageInformation = sender.imageModel;
     imageInformationController.extraInformationType = ExtraImageInformation;
+
+
+    imageInformationController.fullImageClosePopup = ^() {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf nullifyPreviousViewController];
+    };
 
     self.previousSelectedImageInfoViewController = imageInformationController;
 
@@ -306,6 +316,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
                 removeCurrentViewControllerFromParent];
     }
 
+    __weak typeof(self) weakSelf = self;
     CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
     CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
 
@@ -317,6 +328,12 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         sender.imageAuthorModel;
     authorInformationController.extraInformationType =
         ExtraImageAuthorInformation;
+
+    authorInformationController.fullImageClosePopup = ^() {
+
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf nullifyPreviousViewController];
+    };
 
     self.previousSelectedImageInfoViewController = authorInformationController;
 
@@ -342,8 +359,10 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         (JKFullImageDisplayControllerViewController *)[self.storyboard
             instantiateViewControllerWithIdentifier:@"fullimagedisplay"];
     fullImageDisplayController.remoteImageFullURL = sender.remoteImageURL;
+
     fullImageDisplayController.endingCoordinateOnScreen =
         CGPointMake(originatingXCoordinate, originatingYCoordinate);
+
     fullImageDisplayController.view.frame =
         CGRectMake(originatingXCoordinate, originatingYCoordinate,
                    fullImageDisplayController.view.frame.size.width,
@@ -372,4 +391,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         completion:^(BOOL finished) {}];
 }
 
+- (void)nullifyPreviousViewController {
+    self.previousSelectedImageInfoViewController = nil;
+}
 @end

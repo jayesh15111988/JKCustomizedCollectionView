@@ -20,4 +20,8 @@
 
 @property (nonatomic,assign) CGPoint endingCoordinateOnScreen;
 -(void)removeCurrentViewControllerFromParent;
+
+
+typedef void (^fullImageClosePopupBlock)();
+@property(strong, nonatomic) fullImageClosePopupBlock fullImageClosePopup;
 @end

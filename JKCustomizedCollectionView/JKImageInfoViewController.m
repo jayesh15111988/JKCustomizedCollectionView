@@ -328,27 +328,40 @@ static NSString *informationCellIdentifier = @"infocell";
     [self removeCurrentViewControllerFromParent];
 }
 
--(void)removeCurrentViewControllerFromParent{
-    [UIView animateWithDuration:defaultAnimationDuration
-                          delay:0.0
-         usingSpringWithDamping:1.0
-          initialSpringVelocity:1
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         
-                         self.view.frame = CGRectMake(self.endingCoordinateOnScreen.x,
-                                                      self.endingCoordinateOnScreen.y,
-                                                      self.view.frame.size.width,
-                                                      self.view.frame.size.height);
-                         
-                         self.view.transform = CGAffineTransformMakeScale(0, 0);
-                     }
-                     completion:^(BOOL finished) {
-                         // Literally remove the view from current parent view controller's
-                         // children hierarchy
-                         [self willMoveToParentViewController:nil];
-                         [self.view removeFromSuperview];
-                         [self removeFromParentViewController];
-                     }];
+- (void)removeCurrentViewControllerFromParent {
+
+    __weak typeof(self) weakSelf = self;
+
+    [UIView animateWithDuration:1.0
+        delay:0.0
+        usingSpringWithDamping:1.0
+        initialSpringVelocity:1
+        options:UIViewAnimationOptionCurveLinear
+        animations:^{
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+
+            strongSelf.view.frame =
+                CGRectMake(strongSelf.endingCoordinateOnScreen.x,
+                           strongSelf.endingCoordinateOnScreen.y,
+                           strongSelf.view.frame.size.width,
+                           strongSelf.view.frame.size.height);
+
+            strongSelf.view.transform = CGAffineTransformMakeScale(0, 0);
+        }
+        completion:^(BOOL finished) {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+
+            // Literally remove the view from current parent view controller's
+            // children hierarchy
+            [strongSelf willMoveToParentViewController:nil];
+            [strongSelf.view removeFromSuperview];
+            [strongSelf removeFromParentViewController];
+
+            DLog(@"%@ strong self", self);
+//Nullify this view controller after pressing close button
+            if (strongSelf.fullImageClosePopup) {
+                strongSelf.fullImageClosePopup();
+            }
+        }];
 }
 @end
