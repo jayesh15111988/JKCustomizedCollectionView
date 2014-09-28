@@ -25,13 +25,11 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 @interface CustomTapGestureRecognizer : UITapGestureRecognizer
 
-@property (nonatomic, strong) JKImageAuthorObjectModel *imageAuthorModel;
-@property (nonatomic, strong) JKImageObjectModel *imageModel;
+@property(nonatomic, strong) JKImageAuthorObjectModel *imageAuthorModel;
+@property(nonatomic, strong) JKImageObjectModel *imageModel;
 
 
 @end
-
-
 
 
 @implementation CustomTapGestureRecognizer
@@ -52,6 +50,10 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 @property(weak, nonatomic) IBOutlet UIView *initialWelcomeView;
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+// Error Message view elements
+@property(weak, nonatomic) IBOutlet UIView *errorMessageView;
+@property(weak, nonatomic) IBOutlet UILabel *errorMessageLabel;
+- (IBAction)closeErrorMessageViewButtonPressed:(id)sender;
 
 - (IBAction)getImagesButtonPressed:(UIButton *)sender;
 @end
@@ -60,7 +62,6 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.mainCollectionViewLayout.collectionViewMainController = self;
 }
 
@@ -78,40 +79,28 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     [cell customizeCellWithPhotoDetails];
 
 
-
-
     CustomTapGestureRecognizer *imageInfoButtonTapRecognizer =
-        [[CustomTapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(imageInformationButtonTapped:)];
-    
-    imageInfoButtonTapRecognizer.imageModel=cell.individualImageProperties;
-    
-    
+        [[CustomTapGestureRecognizer alloc]
+            initWithTarget:self
+                    action:@selector(imageInformationButtonTapped:)];
+
+    imageInfoButtonTapRecognizer.imageModel = cell.individualImageProperties;
+
+
     CustomTapGestureRecognizer *authorInfoButtonTapRecognizer =
-        [[CustomTapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(authorInformationButtonTapped:)];
-    authorInfoButtonTapRecognizer.imageAuthorModel=cell.individualImageProperties.authorModelForCurrentImage;
-    
-    
+        [[CustomTapGestureRecognizer alloc]
+            initWithTarget:self
+                    action:@selector(authorInformationButtonTapped:)];
+    authorInfoButtonTapRecognizer.imageAuthorModel =
+        cell.individualImageProperties.authorModelForCurrentImage;
+
+
     [imageInfoButtonTapRecognizer setDelegate:self];
     [authorInfoButtonTapRecognizer setDelegate:self];
 
     [cell.getImageInfoButton addGestureRecognizer:imageInfoButtonTapRecognizer];
     [cell.getAuthorInfoButton
         addGestureRecognizer:authorInfoButtonTapRecognizer];
-
-    //    [cell.getAuthorInfoButton addGestureRecognizer:tap];
-
-
-    cell.getImageInfo = ^() {
-
-    };
-
-    cell.getAuthorInfo = ^() {
-
-
-        
-    };
     return cell;
 }
 
@@ -138,7 +127,37 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 }
 
 
+- (IBAction)closeErrorMessageViewButtonPressed:(id)sender {
+
+    self.errorMessageLabel.text = @"No Errors";
+
+    [UIView animateWithDuration:1
+        delay:0
+        usingSpringWithDamping:0.3
+        initialSpringVelocity:5
+        options:UIViewAnimationOptionCurveLinear
+        animations:^{
+            self.errorMessageView.frame = CGRectMake(330, -300, 375, 270);
+        }
+        completion:^(BOOL finished) {}];
+}
+
 - (IBAction)getImagesButtonPressed:(UIButton *)sender {
+
+
+    if (![self.numberOfResultsPerPage.text isThisStringNumeric] ||
+        ![self.pageNumber.text isThisStringNumeric]) {
+        [self
+            showAlertWithErrorMessage:@"Please Enter valid search parameters"];
+        return;
+    }
+
+    if ([self.numberOfResultsPerPage.text integerValue] > 100) {
+        [self showAlertWithErrorMessage:@"Maximum value of number of results "
+              @"is 100. Value adjusted to 100 and "
+              @"returned relevant results"];
+        self.numberOfResultsPerPage.text = @"100";
+    }
 
 
     [self.mainCollectionViewLayout setup];
@@ -180,7 +199,11 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         }
         failure:^(NSError *errorResponse) {
 
-
+            [self
+                showAlertWithErrorMessage:
+                    [NSString
+                        stringWithFormat:@"Error occurred with description %@",
+                                         [errorResponse localizedDescription]]];
             DLog(@"api request failed with error %@",
                  [errorResponse description]);
         }];
@@ -199,14 +222,14 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:defaultAnimationDuration
         delay:0.0
-        usingSpringWithDamping:0.3
-        initialSpringVelocity:10
+        usingSpringWithDamping:0.7
+        initialSpringVelocity:5
         options:UIViewAnimationOptionCurveEaseOut
         animations:^{
 
             __strong __typeof(weakSelf) strongSelf = weakSelf;
             extraImageInformationController.view.frame = CGRectMake(
-                strongSelf.view.center.x, 400,
+                strongSelf.view.center.x + 125, 400,
                 extraImageInformationController.view.frame.size.width,
                 extraImageInformationController.view.frame.size.height);
 
@@ -217,59 +240,56 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         completion:^(BOOL finished) { DLog(@"Finished"); }];
 }
 
+#pragma mark touch gesture recognizer delegate methods
+
 - (void)imageInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
     NSLog(@"%f %f", [sender locationInView:self.view].x,
           [sender locationInView:self.view].y);
-    
-    CGFloat originatingXCoordinate = [sender locationInView:self.view].x-250;
-    CGFloat originatingYCoordinate = [sender locationInView:self.view].y-300;
-    
-    JKImageInfoViewController *imageInformationController =
-    (JKImageInfoViewController *)[self.storyboard
-                                  instantiateViewControllerWithIdentifier:@"imageinfo"];
-    imageInformationController.imageInformation =
-    sender.imageModel;
-    imageInformationController.extraInformationType = ExtraImageInformation;
-    
-    
-    imageInformationController.view.frame =
-    CGRectMake(originatingXCoordinate, originatingYCoordinate,
-               currentViewWidth, currentViewHeight);
-    imageInformationController.endingCoordinateOnScreen =
-    CGPointMake(originatingXCoordinate, originatingYCoordinate);
-    
-    
-    [self showExtraInformationViewWithViewController:
-     imageInformationController];
 
-    
+    CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
+    CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
+
+    JKImageInfoViewController *imageInformationController =
+        (JKImageInfoViewController *)
+        [self.storyboard instantiateViewControllerWithIdentifier:@"imageinfo"];
+    imageInformationController.imageInformation = sender.imageModel;
+    imageInformationController.extraInformationType = ExtraImageInformation;
+
+
+    imageInformationController.view.frame =
+        CGRectMake(originatingXCoordinate, originatingYCoordinate,
+                   currentViewWidth, currentViewHeight);
+    imageInformationController.endingCoordinateOnScreen =
+        CGPointMake(originatingXCoordinate, originatingYCoordinate);
+
+
+    [self
+        showExtraInformationViewWithViewController:imageInformationController];
 }
 
 - (void)authorInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
     NSLog(@"%f %f", [sender locationInView:self.view].x,
           [sender locationInView:self.view].y);
-    
-    CGFloat originatingXCoordinate = [sender locationInView:self.view].x-250;
-    CGFloat originatingYCoordinate = [sender locationInView:self.view].y-300;
-    
+
+    CGFloat originatingXCoordinate = [sender locationInView:self.view].x - 250;
+    CGFloat originatingYCoordinate = [sender locationInView:self.view].y - 300;
+
     JKImageInfoViewController *authorInformationController =
-    (JKImageInfoViewController *)[self.storyboard
-                                  instantiateViewControllerWithIdentifier:@"imageinfo"];
+        (JKImageInfoViewController *)
+        [self.storyboard instantiateViewControllerWithIdentifier:@"imageinfo"];
     authorInformationController.imageAuthorInformation =
-    sender.imageAuthorModel;
+        sender.imageAuthorModel;
     authorInformationController.extraInformationType =
-    ExtraImageAuthorInformation;
-    
+        ExtraImageAuthorInformation;
+
     authorInformationController.view.frame =
-    CGRectMake(originatingXCoordinate, originatingYCoordinate,
-               currentViewWidth, currentViewHeight);
+        CGRectMake(originatingXCoordinate, originatingYCoordinate,
+                   currentViewWidth, currentViewHeight);
     authorInformationController.endingCoordinateOnScreen =
-    CGPointMake(originatingXCoordinate, originatingYCoordinate);
-    
-    [self showExtraInformationViewWithViewController:
-     authorInformationController];
-    
-    
+        CGPointMake(originatingXCoordinate, originatingYCoordinate);
+
+    [self
+        showExtraInformationViewWithViewController:authorInformationController];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -277,5 +297,17 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     return YES;
 }
 
+- (void)showAlertWithErrorMessage:(NSString *)errorMessage {
+    self.errorMessageLabel.text = errorMessage;
 
+    [UIView animateWithDuration:1
+        delay:0
+        usingSpringWithDamping:0.7
+        initialSpringVelocity:5
+        options:UIViewAnimationOptionCurveLinear
+        animations:^{
+            self.errorMessageView.frame = CGRectMake(330, 300, 375, 270);
+        }
+        completion:^(BOOL finished) {}];
+}
 @end

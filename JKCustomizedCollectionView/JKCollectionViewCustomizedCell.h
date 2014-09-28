@@ -25,11 +25,5 @@
 @property(strong, nonatomic) JKImageObjectModel *imageModel;
 @property(strong, nonatomic) JKImageAuthorObjectModel *imageAuthorModel;
 
-typedef void (^imageInfoBlock)();
-@property(strong, nonatomic) imageInfoBlock getImageInfo;
-
-typedef void (^authorInfoBlock)();
-@property(strong, nonatomic) authorInfoBlock getAuthorInfo;
-
 
 @end

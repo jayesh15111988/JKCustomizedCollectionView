@@ -14,4 +14,5 @@
 - (NSString *)replaceSpaceWithSymbol;
 - (NSString*)convertmySQLStringToDateFormattedString;
 -(BOOL)isNull;
+-(BOOL)isThisStringNumeric;
 @end

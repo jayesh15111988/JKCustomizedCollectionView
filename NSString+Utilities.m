@@ -9,6 +9,8 @@
 #import "NSString+Utilities.h"
 
 static NSDateFormatter *dateFormatter;
+static NSCharacterSet *characterSetWithNoDigits;
+
 
 @implementation NSString (Utilities)
 
@@ -63,5 +65,14 @@ static NSDateFormatter *dateFormatter;
 
 - (BOOL)isNull {
     return (((NSNull *)self == [NSNull null]) || (!self));
+}
+
+- (BOOL)isThisStringNumeric {
+    
+    characterSetWithNoDigits =
+    [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    
+    return ([self rangeOfCharacterFromSet:characterSetWithNoDigits].location ==
+            NSNotFound);
 }
 @end

@@ -248,9 +248,65 @@
                                 <color key="color" red="1" green="0.56211517820000001" blue="0.2481714086" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" id="xqb-49-PhK">
-                                <rect key="frame" x="0.0" y="1122" width="1024" height="646"/>
+                                <rect key="frame" x="0.0" y="122" width="1024" height="646"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter search parameters and then click Refresh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Cj-PY-l7l">
+                                        <rect key="frame" x="312" y="173" width="400" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.3077575441" green="0.66666666669999997" blue="0.64746838780000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="MOR-t7-n8m">
+                                <rect key="frame" x="330" y="-300" width="375" height="270"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="XPn-wt-eoM">
+                                        <rect key="frame" x="0.0" y="10" width="375" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N3M-Ic-jT2">
+                                                <rect key="frame" x="87" y="10" width="200" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                                <color key="textColor" red="0.93834918479999996" green="0.16552610849999999" blue="0.1504871055" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="51O-uZ-6F7">
+                                        <rect key="frame" x="0.0" y="70" width="375" height="133"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" id="Gjd-FX-8IH">
+                                                <rect key="frame" x="12" y="11" width="350" height="114"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZqM-y7-z4g">
+                                        <rect key="frame" x="137" y="221" width="100" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeErrorMessageViewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fla-mc-ISv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.53324634110000002" green="0.52292924829999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -258,6 +314,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="activityIndicator" destination="5qc-Q0-Nci" id="ubn-KP-cCH"/>
+                        <outlet property="errorMessageLabel" destination="Gjd-FX-8IH" id="ldi-Nt-8Nd"/>
+                        <outlet property="errorMessageView" destination="MOR-t7-n8m" id="ato-1L-zp3"/>
                         <outlet property="initialWelcomeView" destination="xqb-49-PhK" id="drw-N3-XaQ"/>
                         <outlet property="mainCollectionView" destination="4dj-OL-vPT" id="oed-EL-WSH"/>
                         <outlet property="mainCollectionViewLayout" destination="tMB-wq-VTi" id="r4b-bM-vNn"/>

@@ -34,13 +34,6 @@
 - (void)customizeCellWithPhotoDetails{
 
 
-    [self.getImageInfoButton addTarget:self
-                                action:@selector(imageInfoButtonClicked:)
-                      forControlEvents:UIControlEventTouchUpInside];
-
-    [self.getAuthorInfoButton addTarget:self
-                                 action:@selector(authorInfoButtonClicked:)
-                       forControlEvents:UIControlEventTouchUpInside];
 
 
 
@@ -101,20 +94,6 @@
 }
 
 
-- (IBAction)imageInfoButtonClicked:(id)sender {
-    // Show extra image information if this button is pressed
-    if (self.getImageInfo) {
-        self.getImageInfo();
-    }
-}
-
-- (IBAction)authorInfoButtonClicked:(id)sender {
-    // Show author specific information if this button is pressed
-    if (self.getAuthorInfo) {
-        self.getAuthorInfo(
-            );
-    }
-}
 
 
 @end
