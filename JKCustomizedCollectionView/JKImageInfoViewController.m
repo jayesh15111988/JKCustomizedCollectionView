@@ -281,16 +281,18 @@ static NSString *informationCellIdentifier = @"infocell";
                         // storyboard
                         if (image) {
                             [cell.imageIcon setImage:image];
+                            cell.accessoryType =
+                                UITableViewCellAccessoryCheckmark;
                         } else {
-                            // Put some placeholder image in here if image is
-                            // not
-                            // found
-                            [cell.imageIcon setImage:nil];
+                            [cell.imageIcon
+                                setImage:[UIImage imageNamed:@"noImage.png"]];
+                            cell.accessoryType = UITableViewCellAccessoryNone;
                         }
                     }];
 
             } else {
                 [cell.imageIcon setImage:[UIImage imageNamed:@"noImage.png"]];
+                cell.accessoryType = UITableViewCellAccessoryNone;
             }
 
         } else {
@@ -299,11 +301,20 @@ static NSString *informationCellIdentifier = @"infocell";
                 stringWithFormat:@"%@", attributeValue ?: @"Not Available"];
         }
     }
-    DLog(@"Class %@", [attributeValue class]);
-    cell.imageAttributeValue.text =
-        ([attributeValue isNull] || ![attributeValue length])
-            ? notSpecifiedDisplayString
-            : attributeValue;
+
+    if (indexPath.row != 0) {
+        if ([attributeValue isNull] || ![attributeValue length] ||
+            [attributeValue isEqualToString:notSpecifiedDisplayString]) {
+            cell.imageAttributeValue.text = notSpecifiedDisplayString;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+
+        } else {
+            cell.imageAttributeValue.text = attributeValue;
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+
+
     return cell;
 }
 
