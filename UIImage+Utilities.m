@@ -11,30 +11,27 @@
 @implementation UIImage (Utilities)
 
 - (UIImage *)imageWithImageScaledToDimension:(CGFloat)imageToScaleParameter
-                                 isWidth:(BOOL)isScalingWidth {
+                                     isWidth:(BOOL)isScalingWidth {
 
     CGFloat oldWidth = self.size.width;
-    CGFloat oldHeight = self.size.width;
+    CGFloat oldHeight = self.size.height;
 
     CGFloat scaleFactor = 1.0;
 
 
     if (isScalingWidth) {
-        if (self.size.width > imageToScaleParameter) {
-        scaleFactor = imageToScaleParameter / oldWidth;
-        }
-        else{
+        if (oldWidth > imageToScaleParameter) {
+            scaleFactor = imageToScaleParameter / oldWidth;
+        } else {
             return self;
         }
 
     } else {
-        if (self.size.height > imageToScaleParameter) {
-        scaleFactor = imageToScaleParameter / oldHeight;
-        }
-        else{
+        if (oldHeight > imageToScaleParameter) {
+            scaleFactor = imageToScaleParameter / oldHeight;
+        } else {
             return self;
         }
-
     }
 
 
