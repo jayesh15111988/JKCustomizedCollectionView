@@ -51,11 +51,6 @@
         stepIncrementForCellHeight * self.individualImageProperties.heightToIncrementForCell;
     self.imageDescription.frame = imageDescriptionFrame;
 
-    DLog(@"Height %f and number of lines %d",
-         self.imageDescription.frame.size.height,
-         self.imageDescription.numberOfLines);
-
-
     __block CGFloat imageWidthToAdjust = 200;
 
     __weak typeof(self) weakSelf = self;

@@ -122,8 +122,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DLog(@"Item selected in collection view at section number %d",
-         indexPath.section);
+
     JKCollectionViewCustomizedCell *selectedCell =
         (JKCollectionViewCustomizedCell *)
         [self.mainCollectionView cellForItemAtIndexPath:indexPath];
@@ -203,7 +202,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         andPathToAPI:
             [NSString
                 stringWithFormat:
-                    @"photos/search?term=%@&page=%@&rpp=%@&consumer_key=%@",
+                    @"photos/search?term=%@&page=%@&rpp=%@&image_size=4&consumer_key=%@",
                     stringWithStrippedSpaces, self.pageNumber.text,
                     self.numberOfResultsPerPage.text, CONSUMER_KEY]
         andParameters:nil
