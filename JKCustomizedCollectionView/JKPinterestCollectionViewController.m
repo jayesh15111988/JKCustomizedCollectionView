@@ -134,8 +134,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (IBAction)closeErrorMessageViewButtonPressed:(id)sender {
 
-    self.errorMessageLabel.text = @"No Errors";
-    [self.view endEditing:YES];
+    self.errorMessageLabel.text = @"No Errors";    
 
     [UIView animateWithDuration:1
         delay:0
@@ -149,8 +148,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 }
 
 - (IBAction)getImagesButtonPressed:(UIButton *)sender {
-
-
+    
+    [self.view endEditing:YES];
     if (![self.numberOfResultsPerPage.text isThisStringNumeric] ||
         ![self.pageNumber.text isThisStringNumeric]) {
 
