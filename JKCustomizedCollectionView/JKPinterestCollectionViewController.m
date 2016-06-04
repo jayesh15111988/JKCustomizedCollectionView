@@ -134,7 +134,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 - (IBAction)closeErrorMessageViewButtonPressed:(id)sender {
 
-    self.errorMessageLabel.text = @"No Errors";    
+    self.errorMessageLabel.text = @"No Errors";
 
     [UIView animateWithDuration:1
         delay:0
@@ -229,8 +229,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     [self.view addSubview:extraImageInformationController.view];
     [extraImageInformationController didMoveToParentViewController:self];
 
-
-    __weak typeof(self) weakSelf = self;
+    
     [UIView animateWithDuration:defaultAnimationDuration
         delay:0.0
         usingSpringWithDamping:0.7
@@ -352,7 +351,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
                    fullImageDisplayController.view.frame.size.width,
                    self.view.frame.size.height - 65);
     [self showExtraInformationViewWithViewController:fullImageDisplayController
-                                 andPositionOnScreen:CGPointMake(self.view.center.x - 55, 440)];
+                                     andPositionOnScreen:CGPointMake(self.view.center.x - 55, 440)];
+    CFRunLoopWakeUp(CFRunLoopGetCurrent());
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

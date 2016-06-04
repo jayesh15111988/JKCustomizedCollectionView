@@ -101,7 +101,7 @@
 
     NSInteger lengthOfDescription =
         [imageDescription isNull] ? 0 : [imageDescription length];
-// xxx
+
     NSInteger finalLengthOfLabel = 0;
 
     finalLengthOfLabel = ceil(lengthOfDescription / 38.0);

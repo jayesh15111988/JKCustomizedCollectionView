@@ -14,7 +14,7 @@ static NSString *notSpecifiedDisplayString = @"Not Specified";
 
 static CGFloat currentViewWidth = 500;
 static CGFloat currentViewHeight = 600;
-static CGFloat defaultAnimationDuration = 2.0;
+static CGFloat defaultAnimationDuration = 1.5;
 
 typedef NS_ENUM(NSUInteger, ExtraImageInformationType) {
     ExtraImageInformation,

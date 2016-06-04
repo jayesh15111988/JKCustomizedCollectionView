@@ -305,11 +305,10 @@ static NSString *informationCellIdentifier = @"infocell";
     }
 
     if (indexPath.row != 0) {
-        if ([attributeValue isNull] || ![attributeValue length] ||
-            [attributeValue isEqualToString:notSpecifiedDisplayString]) {
+
+        if (attributeValue == (id)[NSNull null]) {
             cell.imageAttributeValue.text = notSpecifiedDisplayString;
             cell.accessoryType = UITableViewCellAccessoryNone;
-
         } else {
             cell.imageAttributeValue.text = attributeValue;
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
