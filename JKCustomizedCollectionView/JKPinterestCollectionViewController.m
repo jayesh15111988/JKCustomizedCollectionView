@@ -239,7 +239,6 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         options:UIViewAnimationOptionCurveEaseOut
         animations:^{
 
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
             extraImageInformationController.view.frame = CGRectMake(
                 positionOnScreenForNewView.x,
                 positionOnScreenForNewView.y,

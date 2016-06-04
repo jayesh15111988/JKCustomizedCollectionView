@@ -40,6 +40,10 @@ static NSString *informationCellIdentifier = @"infocell";
         CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y,
                    currentViewWidth, currentViewHeight);
 
+    self.imageInfoTableView.rowHeight = UITableViewAutomaticDimension;
+    self.imageInfoTableView.estimatedRowHeight = 70;
+    self.imageInfoTableView.tableFooterView = [[UIView alloc] init];
+    
     if (self.extraInformationType == ExtraImageAuthorInformation) {
 
         self.extraImageInformationLabel.text = @"Photographer Information";
@@ -314,11 +318,6 @@ static NSString *informationCellIdentifier = @"infocell";
 
 
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView
-    heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70;
 }
 
 - (IBAction)closeViewButtonPressed:(id)sender {
