@@ -83,7 +83,8 @@
             [UIView animateWithDuration:1
                 delay:0.0f
                 options:UIViewAnimationOptionCurveLinear
-                animations:^{ strongSelf.imageView.alpha = 1; }
+                animations:^{ strongSelf.imageView.alpha = 1;
+                }
                 completion:^(BOOL finished) {}];
         }];
 }

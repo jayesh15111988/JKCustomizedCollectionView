@@ -45,7 +45,7 @@ static NSString *const customLayoutCell =
 
     self.totalContentHeightOfCollectionView = 20;
     self.maxHeightForGivenRow = -100;
-    self.itemSize = CGSizeMake(defaultCellWidth, defaultCellHeight);
+    self.itemSizeOfImage = CGSizeMake(defaultCellWidth, defaultCellHeight);
     self.interItemSpacingY = defaultContentInsetsTop;
     self.numberOfColumns = 3;
 }
@@ -109,26 +109,16 @@ static NSString *const customLayoutCell =
                        self.itemInsets.left - self.itemInsets.right -
                        (self.numberOfColumns * self.itemSize.width);
 
-
-    // Critical height increase label height for each 38 increase in input
-    // string length
-    // TO DO
-
     self.imageModel =
         (JKImageObjectModel *)self.listOfPhotos[indexPath.section];
 
-    DLog(@"Section number %d and height increment %f", indexPath.section,
+    DLog(@"Section number %ld and height increment %f", (long)indexPath.section,
          self.imageModel.heightToIncrementForCell);
 
     CGFloat randomHeightOfCurrentCell =
-        305 +
+        self.itemSize.height +
         stepIncrementForCellHeight *
             (self.imageModel.heightToIncrementForCell - 1);
-    // cellMinimumHeight + arc4random()
-    // % (cellMaximumHeight -
-    // cellMinimumHeight);
-
-    DLog(@"%f random height of cell", randomHeightOfCurrentCell);
 
     if (!self.isContentSizeFinalized) {
         if (randomHeightOfCurrentCell > self.maxHeightForGivenRow) {
@@ -211,8 +201,6 @@ static NSString *const customLayoutCell =
 }
 
 - (CGSize)collectionViewContentSize {
-
-
     return CGSizeMake(self.collectionView.bounds.size.width,
                       self.totalContentHeightOfCollectionView);
 }

@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APIVersion</key>
+	<string>v1</string>
+	<key>Authorization</key>
+	<string></string>
+	<key>BaseURL</key>
+	<string>https://api.500px.com</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -9,15 +15,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>JK.${PRODUCT_NAME:rfc1034identifier}</string>
-	<key>BaseURL</key>
-	<string>https://api.500px.com</string>
-	<key>APIVersion</key>
-	<string>v1</string>
-	<key>Authorization</key>
-	<string></string>
-	<key>TimeoutPeriod</key>
-	<string>10</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -32,6 +30,8 @@
 	<string>45</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>TimeoutPeriod</key>
+	<string>10</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile~ipad</key>

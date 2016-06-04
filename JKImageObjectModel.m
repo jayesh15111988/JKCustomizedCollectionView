@@ -44,10 +44,12 @@
             imageModel.createdOn = @"Not Available";
         }
 
-        imageModel.imageDescription =
-            [individualImageInfoDictionary[@"description"] isNull]
-                ? notSpecifiedDisplayString
-                : individualImageInfoDictionary[@"description"];
+        if (individualImageInfoDictionary[@"description"] == (id)[NSNull null]) {
+            imageModel.imageDescription = notSpecifiedDisplayString;
+        } else {
+            imageModel.imageDescription = individualImageInfoDictionary[@"description"];
+        }
+        
         imageModel.imageDescription =
             [imageModel.imageDescription stripWhiteSpacesAndNewlinesFromString];
         imageModel.favoritesCount = [NSString
@@ -59,18 +61,18 @@
             individualImageInfoDictionary[@"locations"] ?: @"Not Specified";
         imageModel.latitude = [NSString
             stringWithFormat:@"%@",
-                             [individualImageInfoDictionary[@"latitude"] isNull]
+                             individualImageInfoDictionary[@"latitude"]
                                  ? notSpecifiedDisplayString
                                  : individualImageInfoDictionary[@"latitude"]];
         imageModel.longitude = [NSString
             stringWithFormat:
-                @"%@", [individualImageInfoDictionary[@"longitude"] isNull]
+                @"%@", individualImageInfoDictionary[@"longitude"]
                            ? notSpecifiedDisplayString
                            : individualImageInfoDictionary[@"longitude"]];
         imageModel.imageName = individualImageInfoDictionary[@"name"];
         imageModel.shutterSpeed =
             individualImageInfoDictionary[@"shutter_speed"];
-        if (![individualImageInfoDictionary[@"taken_at"] isNull]) {
+        if (!individualImageInfoDictionary[@"taken_at"]) {
             imageModel.takenOn = [individualImageInfoDictionary[
                 @"taken_at"] convertmySQLStringToDateFormattedString];
 
@@ -84,7 +86,6 @@
             getNumberOfLinesForGivenDescription:imageModel.imageDescription];
 
        
-
         imageModel.authorModelForCurrentImage = [JKImageAuthorObjectModel
             getObjectModelsFromImageAuthorInfoDictionary:
                 individualImageInfoDictionary[@"user"]];
@@ -100,7 +101,7 @@
 
     NSInteger lengthOfDescription =
         [imageDescription isNull] ? 0 : [imageDescription length];
-
+// xxx
     NSInteger finalLengthOfLabel = 0;
 
     finalLengthOfLabel = ceil(lengthOfDescription / 38.0);

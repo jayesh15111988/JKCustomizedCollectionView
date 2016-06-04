@@ -66,6 +66,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mainCollectionViewLayout.collectionViewMainController = self;
+    self.mainCollectionViewLayout.itemSize = CGSizeMake(310, 305);
 }
 
 #pragma mark delegate Collection view methods
@@ -120,19 +121,8 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-    didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    JKCollectionViewCustomizedCell *selectedCell =
-        (JKCollectionViewCustomizedCell *)
-        [self.mainCollectionView cellForItemAtIndexPath:indexPath];
-    DLog(@"Cell properties are %f and %f", selectedCell.frame.origin.x,
-         selectedCell.frame.origin.y);
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-
     return 1;
 }
 
@@ -145,7 +135,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 - (IBAction)closeErrorMessageViewButtonPressed:(id)sender {
 
     self.errorMessageLabel.text = @"No Errors";
-
+    [self.view endEditing:YES];
 
     [UIView animateWithDuration:1
         delay:0
@@ -172,9 +162,6 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
     sender.enabled = NO;
 
     if ([self.numberOfResultsPerPage.text integerValue] > 100) {
-        [self showAlertWithErrorMessage:@"Maximum value of number of results "
-              @"is 100. Value adjusted to 100 and "
-              @"returned relevant results"];
         self.numberOfResultsPerPage.text = @"100";
     }
 
@@ -254,7 +241,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
             __strong __typeof(weakSelf) strongSelf = weakSelf;
             extraImageInformationController.view.frame = CGRectMake(
-                strongSelf.view.center.x + positionOnScreenForNewView.x,
+                positionOnScreenForNewView.x,
                 positionOnScreenForNewView.y,
                 extraImageInformationController.view.frame.size.width,
                 extraImageInformationController.view.frame.size.height);
@@ -303,7 +290,7 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
 
 
     [self showExtraInformationViewWithViewController:imageInformationController
-                                 andPositionOnScreen:CGPointMake(125, 400)];
+                                 andPositionOnScreen:CGPointMake(self.view.center.x, 400)];
 }
 
 - (void)authorInformationButtonTapped:(CustomTapGestureRecognizer *)sender {
@@ -343,11 +330,11 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         CGPointMake(originatingXCoordinate, originatingYCoordinate);
 
     [self showExtraInformationViewWithViewController:authorInformationController
-                                 andPositionOnScreen:CGPointMake(125, 400)];
+                                 andPositionOnScreen:CGPointMake(self.view.center.x, 400)];
 }
 
 - (void)displayFullImageButtonTapped:(CustomTapGestureRecognizer *)sender {
-
+    
 
     // 1024 1024/2 - 1024/8
     // 768 768/2 - 768/8
@@ -358,17 +345,16 @@ static NSString *cellIdentifier = @"customizedCollectionViewCellIdentifier";
         (JKFullImageDisplayControllerViewController *)[self.storyboard
             instantiateViewControllerWithIdentifier:@"fullimagedisplay"];
     fullImageDisplayController.remoteImageFullURL = sender.remoteImageURL;
-
+    
     fullImageDisplayController.endingCoordinateOnScreen =
         CGPointMake(originatingXCoordinate, originatingYCoordinate);
 
     fullImageDisplayController.view.frame =
         CGRectMake(originatingXCoordinate, originatingYCoordinate,
                    fullImageDisplayController.view.frame.size.width,
-                   fullImageDisplayController.view.frame.size.height);
-
+                   self.view.frame.size.height - 65);
     [self showExtraInformationViewWithViewController:fullImageDisplayController
-                                 andPositionOnScreen:CGPointMake(-40, 175)];
+                                 andPositionOnScreen:CGPointMake(self.view.center.x - 55, 440)];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

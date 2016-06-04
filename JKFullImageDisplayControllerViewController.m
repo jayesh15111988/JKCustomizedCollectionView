@@ -15,8 +15,7 @@
 
 - (IBAction)closeButtonPressed:(id)sender;
 @property(weak, nonatomic) IBOutlet UIImageView *fullImageDisplayImageView;
-@property(weak, nonatomic)
-    IBOutlet UIActivityIndicatorView *activityIndicatorForLoadingImage;
+@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorForLoadingImage;
 
 
 @end

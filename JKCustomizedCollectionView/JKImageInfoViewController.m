@@ -165,8 +165,6 @@ static NSString *informationCellIdentifier = @"infocell";
 
     NSString *attributeValue = @"";
 
-    DLog(@"Index row %d", indexPath.row);
-
     if (self.extraInformationType == ExtraImageInformation) {
         switch (indexPath.row) {
         case 1:
@@ -358,7 +356,6 @@ static NSString *informationCellIdentifier = @"infocell";
             [strongSelf removeFromParentViewController];
 
             DLog(@"%@ strong self", self);
-//Nullify this view controller after pressing close button
             if (strongSelf.fullImageClosePopup) {
                 strongSelf.fullImageClosePopup();
             }

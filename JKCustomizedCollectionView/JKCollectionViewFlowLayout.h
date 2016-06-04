@@ -12,7 +12,7 @@
 @interface JKCollectionViewFlowLayout : UICollectionViewFlowLayout
 
 @property(nonatomic) UIEdgeInsets itemInsets;
-@property(nonatomic) CGSize itemSize;
+@property(nonatomic) CGSize itemSizeOfImage;
 @property(nonatomic) CGFloat interItemSpacingY;
 @property(nonatomic) NSInteger numberOfColumns;
 @property(nonatomic, strong) NSArray *listOfPhotos;
